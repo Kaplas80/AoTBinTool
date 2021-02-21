@@ -98,9 +98,6 @@ jobs:
     if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v')
     needs: [ "build_main", "build_sec" ]
     runs-on: ubuntu-latest
-    env:
-      # Needed only for Azure DevOps Artifacts due to its weird auth method.
-      PREVIEW_NUGET_FEED: 'https://pkgs.dev.azure.com/benito356/NetDevOpsTest/_packaging/Example-Preview/nuget/v3/index.json'
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2

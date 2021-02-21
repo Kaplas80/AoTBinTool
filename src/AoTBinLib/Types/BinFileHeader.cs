@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Benito Palacios Sánchez
+// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,17 +17,32 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace MyTests
+namespace AoTBinLib.Types
 {
-    using MyLibrary;
-    using NUnit.Framework;
-
-    public class VersionTests
+    /// <summary>
+    /// Default BIN file header.
+    /// </summary>
+    [Yarhl.IO.Serialization.Attributes.Serializable]
+    public class BinFileHeader
     {
-        [Test]
-        public void TestVersionNotNull()
-        {
-            Assert.That(LibVersion.GetVersion(), Is.Not.Null);
-        }
+        /// <summary>
+        /// Gets or sets the file magic number.
+        /// </summary>
+        public uint MagicNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of files inside the archive.
+        /// </summary>
+        public int FileCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the block size.
+        /// </summary>
+        public int BlockSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the padding bytes.
+        /// </summary>
+        public int Padding { get; set; }
     }
 }

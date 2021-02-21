@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Benito Palacios Sánchez
+// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,9 +17,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace MyConsole
+namespace AoTBinTool
 {
     using System;
+    using System.IO;
+    using AoTBinLib.Converters;
+    using Yarhl.FileSystem;
 
     /// <summary>
     /// Main program class.
@@ -32,11 +35,28 @@ namespace MyConsole
         /// <param name="args">Application arguments.</param>
         public static void Main(string[] args)
         {
-            string consoleVersion = typeof(Program).Assembly.GetName().Version.ToString();
-            Console.WriteLine($"Console version: {consoleVersion}");
+            string input = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\LINKDATA_C.BIN";
+            string output = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\test";
 
-            string libVersion = MyLibrary.LibVersion.GetVersion();
-            Console.WriteLine($"Library version: {libVersion}");
+            ReaderParameters p = new ReaderParameters()
+            {
+                FileNames = Array.Empty<string>(),
+            };
+
+            Node n = NodeFactory.FromFile(input);
+            n.TransformWith<BinReader, ReaderParameters>(p);
+            foreach (Node n1 in Navigator.IterateNodes(n))
+            {
+                string outputPath = Path.GetFullPath(string.Concat(output, n1.Path.Substring(n.Path.Length)));
+                if (n1.IsContainer)
+                {
+                    Directory.CreateDirectory(outputPath);
+                }
+                else
+                {
+                    n1.Stream.WriteTo(outputPath);
+                }
+            }
         }
     }
 }

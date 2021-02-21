@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Benito Palacios Sánchez
+// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,23 +17,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace MyLibrary
+namespace AoTBinLib.Converters
 {
-    using System.Reflection;
+    using System.Collections.Generic;
+    using Yarhl.IO;
 
     /// <summary>
-    /// Version of the library.
+    /// Parameters needed for BIN reading.
     /// </summary>
-    public static class LibVersion
+    public class ReaderParameters
     {
         /// <summary>
-        /// Gets the version of the library.
+        /// Gets or sets the endianness mode of the file.
         /// </summary>
-        /// <returns>The version of the library.</returns>
-        public static string GetVersion()
-        {
-            Assembly library = typeof(LibVersion).Assembly;
-            return library.GetName().Version.ToString();
-        }
+        public EndiannessMode Endianness { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of known file names.
+        /// </summary>
+        public IList<string> FileNames { get; set; }
     }
 }
