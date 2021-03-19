@@ -89,9 +89,8 @@ namespace AoTBinLib.Converters
                 }
                 else if (size == 0x70 && inflatedSize == -2090892418)
                 {
-                    // PS3 garbage files
-                    // 0x835F837E
-                    node = NodeFactory.FromMemory(fileName);
+                    // PS3 dummy file (0x835F837E)
+                    node = NodeFactory.FromSubstream(fileName, source.Stream, offset, size);
                 }
                 else
                 {
