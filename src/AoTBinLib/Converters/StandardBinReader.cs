@@ -68,7 +68,7 @@ namespace AoTBinLib.Converters
             for (int i = 0; i < header.FileCount; i++)
             {
                 string fileSubPath = string.Empty;
-                string fileName = $"{i:0000}";
+                string fileName = $"{i + 1:0000}";
                 if (_params.FileNames.Count > 0 && i < _params.FileNames.Count)
                 {
                     string[] path = _params.FileNames[i].Split('/');
