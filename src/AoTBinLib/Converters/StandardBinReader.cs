@@ -21,14 +21,18 @@
 namespace AoTBinLib.Converters
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using AoTBinLib.Enums;
     using AoTBinLib.Exceptions;
     using AoTBinLib.Types;
     using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+    using YamlDotNet.Serialization;
+    using YamlDotNet.Serialization.NamingConventions;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
     using Yarhl.IO;
+    using FileInfo = AoTBinLib.Types.FileInfo;
 
     /// <summary>
     /// Attack on Titan standard BIN reader.
@@ -77,13 +81,19 @@ namespace AoTBinLib.Converters
                 throw new FormatException($"Unrecognized file magic number: {header.MagicNumber:X8}");
             }
 
+            List<FileInfo> filesInfo = new List<FileInfo>();
+
             NodeContainerFormat result = new ();
             for (int i = 0; i < header.FileCount; i++)
             {
+                var fileInfo = new FileInfo();
+
                 string fileSubPath = string.Empty;
                 string fileName = $"{i + 1:0000}";
+                fileInfo.Name = fileName;
                 if (_params.FileNames.Count > 0 && i < _params.FileNames.Count)
                 {
+                    fileInfo.Name = _params.FileNames[i];
                     string[] path = _params.FileNames[i].Split('/');
                     fileSubPath = string.Join('/', path[0..^1]);
                     fileName = path[^1];
@@ -100,12 +110,14 @@ namespace AoTBinLib.Converters
                     case 0:
                         // There can be empty files
                         node = NodeFactory.FromMemory(fileName);
-                        node.Tags["Type"] = FileTypes.Empty;
+                        node.Tags["Type"] = FileType.Empty;
+                        fileInfo.Type = FileType.Empty;
                         break;
                     case 0x70 when inflatedSize == 0x835F837E:
                         // PS3 dummy file
                         node = NodeFactory.FromSubstream(fileName, source.Stream, offset, size);
-                        node.Tags["Type"] = FileTypes.Dummy;
+                        node.Tags["Type"] = FileType.Dummy;
+                        fileInfo.Type = FileType.Dummy;
                         break;
                     default:
                     {
@@ -113,28 +125,30 @@ namespace AoTBinLib.Converters
                         {
                             // File is uncompressed.
                             node = NodeFactory.FromSubstream(fileName, source.Stream, offset, size);
-                            node.Tags["Type"] = FileTypes.Normal;
+                            node.Tags["Type"] = FileType.Normal;
+                            fileInfo.Type = FileType.Normal;
                         }
                         else
                         {
                             DataStream stream = DataStreamFactory.FromStream(source.Stream, offset, size);
                             DataStream inflatedStream;
-                            FileTypes type;
+                            FileType type;
                             if (size == 0x00001A48 && inflatedSize == 0x10290000)
                             {
                                 // This files appear in PS3. They are stored as LittleEndian.
                                 var alternateEndianness = _params.Endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
                                 inflatedStream = Inflate(stream, alternateEndianness);
-                                type = FileTypes.CompressedAlternateEndian;
+                                type = FileType.CompressedAlternateEndian;
                             }
                             else
                             {
                                 inflatedStream = Inflate(stream, _params.Endianness);
-                                type = FileTypes.Compressed;
+                                type = FileType.Compressed;
                             }
 
                             node = NodeFactory.FromSubstream(fileName, inflatedStream, 0, inflatedStream.Length);
                             node.Tags["Type"] = type;
+                            fileInfo.Type = type;
                         }
 
                         break;
@@ -149,8 +163,21 @@ namespace AoTBinLib.Converters
                 {
                     result.Root.Add(node);
                 }
+
+                filesInfo.Add(fileInfo);
             }
 
+            var info = NodeFactory.FromMemory("fileInfo.yaml");
+            DataWriter dw = new DataWriter(info.Stream);
+
+            var serializer = new SerializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                .Build();
+            string yaml = serializer.Serialize(filesInfo);
+
+            dw.Write(yaml);
+
+            result.Root.Add(info);
             return result;
         }
 

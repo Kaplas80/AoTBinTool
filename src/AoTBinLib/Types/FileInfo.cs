@@ -18,36 +18,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace AoTBinLib.Enums
+namespace AoTBinLib.Types
 {
+    using AoTBinLib.Enums;
+
     /// <summary>
-    /// Possible file types inside a container.
+    /// Extracted file info.
     /// </summary>
-    public enum FileTypes
+    public class FileInfo
     {
         /// <summary>
-        /// Empty file.
+        /// Gets or sets the file name.
         /// </summary>
-        Empty,
+        public string Name { get; set; }
 
         /// <summary>
-        /// Dummy file. (Only found in PS3).
+        /// Gets or sets the file type.
         /// </summary>
-        Dummy,
-
-        /// <summary>
-        /// Normal (uncompressed) file.
-        /// </summary>
-        Normal,
-
-        /// <summary>
-        /// Compressed file.
-        /// </summary>
-        Compressed,
-
-        /// <summary>
-        /// Compressed file (other endianness).
-        /// </summary>
-        CompressedAlternateEndian,
+        public FileType Type { get; set; }
     }
 }
