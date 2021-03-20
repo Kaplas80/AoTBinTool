@@ -30,6 +30,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.NET_SDK }}
+      - name: "Setup .NET Core 3.1 for Cake dependencies"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.407'
 
       - name: "Install build tools"
         run: dotnet tool restore
@@ -75,6 +79,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.NET_SDK }}
+      - name: "Setup .NET Core 3.1 for Cake dependencies"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.407'
 
       - name: "Install build tools"
         run: dotnet tool restore
@@ -109,7 +117,7 @@ jobs:
       - name: "Setup .NET Core 3.1 for Cake dependencies"
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.404'
+          dotnet-version: '3.1.407'
 
       - name: "Install build tools"
         run: dotnet tool restore
