@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Kaplas
+﻿// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,15 +17,37 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace Tests
-{
-    using NUnit.Framework;
 
-    public class AoTBinTests
+namespace AoTBinLib.Enums
+{
+    /// <summary>
+    /// Possible file types inside a container.
+    /// </summary>
+    public enum FileTypes
     {
-        [Test]
-        public void TestVersionNotNull()
-        {
-        }
+        /// <summary>
+        /// Empty file.
+        /// </summary>
+        Empty,
+
+        /// <summary>
+        /// Dummy file. (Only found in PS3).
+        /// </summary>
+        Dummy,
+
+        /// <summary>
+        /// Normal (uncompressed) file.
+        /// </summary>
+        Normal,
+
+        /// <summary>
+        /// Compressed file.
+        /// </summary>
+        Compressed,
+
+        /// <summary>
+        /// Compressed file (other endianness).
+        /// </summary>
+        CompressedAlternateEndian,
     }
 }

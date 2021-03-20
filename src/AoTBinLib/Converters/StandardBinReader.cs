@@ -17,10 +17,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+
 namespace AoTBinLib.Converters
 {
     using System;
     using System.IO;
+    using AoTBinLib.Enums;
+    using AoTBinLib.Exceptions;
     using AoTBinLib.Types;
     using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
     using Yarhl.FileFormat;
@@ -32,7 +35,7 @@ namespace AoTBinLib.Converters
     /// </summary>
     public class StandardBinReader : IConverter<BinaryFormat, NodeContainerFormat>, IInitializer<ReaderParameters>
     {
-        private ReaderParameters _params = new ReaderParameters
+        private ReaderParameters _params = new ()
         {
             Endianness = EndiannessMode.LittleEndian,
             FileNames = Array.Empty<string>(),
@@ -56,7 +59,12 @@ namespace AoTBinLib.Converters
                 throw new ArgumentNullException(nameof(source));
             }
 
-            source.Stream.Seek(0, SeekOrigin.Begin);
+            if (source.Stream.Length < 0x10)
+            {
+                throw new FormatException("Not a valid BIN file.");
+            }
+
+            source.Stream.Seek(0);
             var reader = new DataReader(source.Stream)
             {
                 Endianness = _params.Endianness,
@@ -64,7 +72,12 @@ namespace AoTBinLib.Converters
 
             BinFileHeader header = reader.Read<BinFileHeader>();
 
-            NodeContainerFormat result = new NodeContainerFormat();
+            if (header.MagicNumber != 0x00077DF9)
+            {
+                throw new FormatException($"Unrecognized file magic number: {header.MagicNumber:X8}");
+            }
+
+            NodeContainerFormat result = new ();
             for (int i = 0; i < header.FileCount; i++)
             {
                 string fileSubPath = string.Empty;
@@ -79,31 +92,52 @@ namespace AoTBinLib.Converters
                 long startBlock = reader.ReadInt64();
                 long offset = startBlock * header.BlockSize;
                 int size = reader.ReadInt32();
-                int inflatedSize = reader.ReadInt32();
+                uint inflatedSize = reader.ReadUInt32();
 
                 Node node;
-                if (size == 0)
+                switch (size)
                 {
-                    // There can be empty files
-                    node = NodeFactory.FromMemory(fileName);
-                }
-                else if (size == 0x70 && inflatedSize == -2090892418)
-                {
-                    // PS3 dummy file (0x835F837E)
-                    node = NodeFactory.FromSubstream(fileName, source.Stream, offset, size);
-                }
-                else
-                {
-                    if (inflatedSize == 0)
-                    {
-                        // File is uncompressed.
+                    case 0:
+                        // There can be empty files
+                        node = NodeFactory.FromMemory(fileName);
+                        node.Tags["Type"] = FileTypes.Empty;
+                        break;
+                    case 0x70 when inflatedSize == 0x835F837E:
+                        // PS3 dummy file
                         node = NodeFactory.FromSubstream(fileName, source.Stream, offset, size);
-                    }
-                    else
+                        node.Tags["Type"] = FileTypes.Dummy;
+                        break;
+                    default:
                     {
-                        DataStream stream = DataStreamFactory.FromStream(source.Stream, offset, size);
-                        DataStream inflatedStream = Inflate(stream, _params.Endianness);
-                        node = NodeFactory.FromSubstream(fileName, inflatedStream, 0, inflatedStream.Length);
+                        if (inflatedSize == 0)
+                        {
+                            // File is uncompressed.
+                            node = NodeFactory.FromSubstream(fileName, source.Stream, offset, size);
+                            node.Tags["Type"] = FileTypes.Normal;
+                        }
+                        else
+                        {
+                            DataStream stream = DataStreamFactory.FromStream(source.Stream, offset, size);
+                            DataStream inflatedStream;
+                            FileTypes type;
+                            if (size == 0x00001A48 && inflatedSize == 0x10290000)
+                            {
+                                // This files appear in PS3. They are stored as LittleEndian.
+                                var alternateEndianness = _params.Endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
+                                inflatedStream = Inflate(stream, alternateEndianness);
+                                type = FileTypes.CompressedAlternateEndian;
+                            }
+                            else
+                            {
+                                inflatedStream = Inflate(stream, _params.Endianness);
+                                type = FileTypes.Compressed;
+                            }
+
+                            node = NodeFactory.FromSubstream(fileName, inflatedStream, 0, inflatedStream.Length);
+                            node.Tags["Type"] = type;
+                        }
+
+                        break;
                     }
                 }
 
@@ -120,7 +154,7 @@ namespace AoTBinLib.Converters
             return result;
         }
 
-        private static DataStream Inflate(DataStream source, EndiannessMode endianness)
+        private static DataStream Inflate(Stream source, EndiannessMode endianness)
         {
             DataStream result = DataStreamFactory.FromMemory();
 
@@ -132,14 +166,6 @@ namespace AoTBinLib.Converters
 
             int size = reader.ReadInt32();
             int chunkSize = reader.ReadInt32();
-
-            if (chunkSize > source.Length)
-            {
-                source.Seek(0, SeekOrigin.Begin);
-                reader.Endianness = endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
-                size = reader.ReadInt32();
-                chunkSize = reader.ReadInt32();
-            }
 
             while (chunkSize != 0)
             {
@@ -156,7 +182,7 @@ namespace AoTBinLib.Converters
 
             if (result.Length != size)
             {
-                throw new Exception("Extraction error.");
+                throw new ExtractionException("Result size doesn't match with expected size.");
             }
 
             return result;

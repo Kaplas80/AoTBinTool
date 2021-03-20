@@ -13,4 +13,10 @@
     <PackageReference Include="coverlet.collector" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="MultiEndianTests.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

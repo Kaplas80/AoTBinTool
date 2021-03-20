@@ -20,6 +20,7 @@
 namespace AoTBinTool
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using AoTBinLib.Converters;
     using Yarhl.FileSystem;
@@ -35,16 +36,14 @@ namespace AoTBinTool
         /// <param name="args">Application arguments.</param>
         public static void Main(string[] args)
         {
-            string input = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\LINKDATA_C.BIN";
+            string input = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\LINKDATA_EU_A.BIN";
+            string filelist = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\FILELIST_A.txt";
             string output = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\test";
 
-            ReaderParameters p = new ReaderParameters()
-            {
-                FileNames = Array.Empty<string>(),
-            };
+            string[] p = File.ReadAllLines(filelist);
 
             Node n = NodeFactory.FromFile(input);
-            n.TransformWith<BinReader, ReaderParameters>(p);
+            n.TransformWith<BinReader, IList<string>>(p);
             foreach (Node n1 in Navigator.IterateNodes(n))
             {
                 string outputPath = Path.GetFullPath(string.Concat(output, n1.Path.Substring(n.Path.Length)));

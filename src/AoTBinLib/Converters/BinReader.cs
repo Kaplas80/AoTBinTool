@@ -20,6 +20,8 @@
 namespace AoTBinLib.Converters
 {
     using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
@@ -28,19 +30,15 @@ namespace AoTBinLib.Converters
     /// <summary>
     /// Attack on Titan BIN reader.
     /// </summary>
-    public class BinReader : IConverter<BinaryFormat, NodeContainerFormat>, IInitializer<ReaderParameters>
+    public class BinReader : IConverter<BinaryFormat, NodeContainerFormat>, IInitializer<IList<string>>
     {
-        private ReaderParameters _params = new ReaderParameters
-        {
-            Endianness = EndiannessMode.LittleEndian,
-            FileNames = Array.Empty<string>(),
-        };
+        private IList<string> _params = Array.Empty<string>();
 
         /// <summary>
         /// Converter initializer.
         /// </summary>
         /// <param name="parameters">Reader configuration.</param>
-        public void Initialize(ReaderParameters parameters) => _params = parameters;
+        public void Initialize(IList<string> parameters) => _params = parameters;
 
         /// <summary>
         /// Deserializes a BIN archive.
@@ -54,7 +52,7 @@ namespace AoTBinLib.Converters
                 throw new ArgumentNullException(nameof(source));
             }
 
-            source.Stream.Seek(0, SeekOrigin.Begin);
+            source.Stream.Seek(0);
             var reader = new DataReader(source.Stream)
             {
                 Endianness = EndiannessMode.BigEndian,
@@ -68,14 +66,14 @@ namespace AoTBinLib.Converters
                     new ReaderParameters
                     {
                         Endianness = EndiannessMode.BigEndian,
-                        FileNames = _params.FileNames,
+                        FileNames = _params,
                     },
                     source),
                 0xF97D0700 => (NodeContainerFormat)ConvertFormat.With<StandardBinReader, ReaderParameters>(
                     new ReaderParameters
                     {
                         Endianness = EndiannessMode.LittleEndian,
-                        FileNames = _params.FileNames,
+                        FileNames = _params,
                     },
                     source),
                 _ => throw new FormatException($"Unrecognized file magic number: {magic:X8}"),
