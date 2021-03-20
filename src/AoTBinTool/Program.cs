@@ -25,7 +25,11 @@ namespace AoTBinTool
     using AoTBinLib.Converters;
     using AoTBinTool.Options;
     using CommandLine;
+    using YamlDotNet.Serialization;
+    using YamlDotNet.Serialization.NamingConventions;
     using Yarhl.FileSystem;
+    using Yarhl.IO;
+    using FileInfo = AoTBinLib.Types.FileInfo;
 
     /// <summary>
     /// Main program class.
@@ -81,6 +85,7 @@ namespace AoTBinTool
             Node binFile = NodeFactory.FromFile(opts.Input);
             binFile.TransformWith<BinReader, IList<string>>(fileList);
 
+            List<FileInfo> filesInfo = new List<FileInfo>();
             foreach (Node node in Navigator.IterateNodes(binFile))
             {
                 string outputPath = Path.GetFullPath(string.Concat(opts.Output, node.Path.Substring(binFile.Path.Length)));
@@ -90,10 +95,25 @@ namespace AoTBinTool
                 }
                 else
                 {
+                    var fileInfo = new FileInfo();
+                    fileInfo.Name = node.Path.Substring(binFile.Path.Length);
+                    fileInfo.Type = node.Tags["Type"];
                     Console.WriteLine($"Writing: {outputPath}");
                     node.Stream.WriteTo(outputPath);
+
+                    filesInfo.Add(fileInfo);
                 }
             }
+
+            var info = NodeFactory.FromFile(Path.Combine(opts.Output, "fileInfo.yaml"));
+            DataWriter dw = new DataWriter(info.Stream);
+
+            var serializer = new SerializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                .Build();
+            string yaml = serializer.Serialize(filesInfo);
+
+            dw.Write(yaml);
         }
 
         private static void Build(BuildOptions opts)
