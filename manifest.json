@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/home/runner/work/template-csharp/template-csharp/docs",
+  "source_base_path": "/home/runner/work/AoTBinTool/AoTBinTool/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "CONTRIBUTING.html",
-          "hash": "5nipa5l4D30v/mqQxHhueA=="
+          "hash": "q6PDCGgLacQt7UR6McbKCg=="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "ruTQbJ+SXdZYM8R0Bo2N7g=="
+          "hash": "hc+CCRmhPKP4XghMWxoBDQ=="
         }
       },
       "is_incremental": false,
@@ -38,11 +38,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/MyLibrary.LibVersion.yml",
+      "source_relative_path": "api/AoTBinLib.Converters.BinReader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MyLibrary.LibVersion.html",
-          "hash": "pnw9g+5o0sOni54MEOAaWA=="
+          "relative_path": "api/AoTBinLib.Converters.BinReader.html",
+          "hash": "h1iHg4FQFJ4o6l6B3oQRzw=="
         }
       },
       "is_incremental": false,
@@ -50,11 +50,119 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/MyLibrary.yml",
+      "source_relative_path": "api/AoTBinLib.Converters.ReaderParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/MyLibrary.html",
-          "hash": "6lkW1Vce445gXx+GBTWfdA=="
+          "relative_path": "api/AoTBinLib.Converters.ReaderParameters.html",
+          "hash": "mzTYGnaPHfy0NU2Nrijivg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Converters.StandardBinReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Converters.StandardBinReader.html",
+          "hash": "nDOlXZiqRVBiDdv0Her6Hw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Converters.html",
+          "hash": "ESgzQrFg0CIVljX0lsAYew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Enums.FileType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Enums.FileType.html",
+          "hash": "2EugbC1se3eImp+dudWprQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Enums.html",
+          "hash": "C9cZKanp/c7lGZr4zXC0rg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Exceptions.ExtractionException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Exceptions.ExtractionException.html",
+          "hash": "whJ0twUDsVjA+53Kadvetw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Exceptions.html",
+          "hash": "KoDz3hVItG4JwP4p4CEjuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Types.BinFileHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Types.BinFileHeader.html",
+          "hash": "vMWibnvsUCMQBgrgg9YslQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Types.FileInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Types.FileInfo.html",
+          "hash": "deuOgq1W0sO5q96ZY/WKCQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Types.html",
+          "hash": "hLnQGTWA86SoRQhRVhtyyA=="
         }
       },
       "is_incremental": false,
@@ -66,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "0rCXCx+IM3K4MsuNkJW1FQ=="
+          "hash": "LxDZJhCrBLfsuclRjtu1Kg=="
         }
       },
       "is_incremental": false,
@@ -78,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/toc.html",
-          "hash": "nXZamthwnyv/dZ02FzrqFQ=="
+          "hash": "rOF0aEH+2Vs1otWLj7nR/Q=="
         }
       },
       "is_incremental": false,
@@ -90,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/Contributing.html",
-          "hash": "6Cb7suxiM1OJKswuPtkZPQ=="
+          "hash": "JA22qTHcffpWT73y9pba9w=="
         }
       },
       "is_incremental": false,
@@ -102,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/First-Steps.html",
-          "hash": "fz/ogG48dRo43YWT1ouBQQ=="
+          "hash": "74OWRaAReiH/h3/ADs/xYg=="
         }
       },
       "is_incremental": false,
@@ -159,7 +267,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "48TORJzebTw37+dnJCBZew=="
+          "hash": "7khr+6l87KzVZtZoPUO3Dw=="
         }
       },
       "is_incremental": false,
@@ -171,7 +279,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "7rSfpIztxf3ePZB3XAFXQQ=="
+          "hash": "VohMyTMRLWHfZgHh0z1a2g=="
         }
       },
       "is_incremental": false,
@@ -198,7 +306,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 2,
+          "total_file_count": 11,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
