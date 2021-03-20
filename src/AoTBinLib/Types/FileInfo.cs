@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Benito Palacios Sánchez
+﻿// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,23 +17,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace MyLibrary
+
+namespace AoTBinLib.Types
 {
-    using System.Reflection;
+    using AoTBinLib.Enums;
 
     /// <summary>
-    /// Version of the library.
+    /// Extracted file info.
     /// </summary>
-    public static class LibVersion
+    public class FileInfo
     {
         /// <summary>
-        /// Gets the version of the library.
+        /// Gets or sets the file name.
         /// </summary>
-        /// <returns>The version of the library.</returns>
-        public static string GetVersion()
-        {
-            Assembly library = typeof(LibVersion).Assembly;
-            return library.GetName().Version.ToString();
-        }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the file type.
+        /// </summary>
+        public FileType Type { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 Benito Palacios Sánchez
+﻿// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,26 +17,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace MyConsole
+
+namespace AoTBinTool.Options
 {
-    using System;
+    using CommandLine;
 
     /// <summary>
-    /// Main program class.
+    /// Build BIN archive.
     /// </summary>
-    public static class Program
+    [Verb("build", HelpText = "Build BIN archive.")]
+    public class BuildOptions
     {
         /// <summary>
-        /// Main entry-point.
+        /// Gets or sets the input directory.
         /// </summary>
-        /// <param name="args">Application arguments.</param>
-        public static void Main(string[] args)
-        {
-            string consoleVersion = typeof(Program).Assembly.GetName().Version.ToString();
-            Console.WriteLine($"Console version: {consoleVersion}");
+        [Option("input", Required = true, HelpText = "Input directory.")]
+        public string Input { get; set; }
 
-            string libVersion = MyLibrary.LibVersion.GetVersion();
-            Console.WriteLine($"Library version: {libVersion}");
-        }
+        /// <summary>
+        /// Gets or sets the output BIN file.
+        /// </summary>
+        [Option("output", Required = true, HelpText = "Output BIN file.")]
+        public string Output { get; set; }
     }
 }

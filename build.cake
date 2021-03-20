@@ -5,13 +5,15 @@ Task("Define-Project")
     .Description("Fill specific project information")
     .Does<BuildInfo>(info =>
 {
-    info.AddLibraryProjects("MyLibrary");
-    info.AddApplicationProjects("src/MyConsole/MyConsole.csproj");
-    info.AddTestProjects("MyTests");
+    info.AddLibraryProjects("AoTBinLib");
+    info.AddApplicationProjects("AoTBinTool");
+    info.AddTestProjects("Tests");
 
-    // No need to set if you want to use nuget.org
-    info.PreviewNuGetFeed = "https://pkgs.dev.azure.com/benito356/NetDevOpsTest/_packaging/Example-Preview/nuget/v3/index.json";
-    info.StableNuGetFeed = "https://pkgs.dev.azure.com/benito356/NetDevOpsTest/_packaging/Example-Preview/nuget/v3/index.json";
+    info.CoverageTarget = 80;
+    info.PreviewNuGetFeed = "https://nuget.pkg.github.com/Kaplas80/index.json";
+    info.PreviewNuGetFeedToken = info.GitHubToken;
+    info.StableNuGetFeed = "https://nuget.pkg.github.com/Kaplas80/index.json";
+    info.StableNuGetFeedToken = info.GitHubToken;
 });
 
 Task("Default")

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Benito Palacios Sánchez
+﻿// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,17 +17,37 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace MyTests
-{
-    using MyLibrary;
-    using NUnit.Framework;
 
-    public class VersionTests
+namespace AoTBinLib.Enums
+{
+    /// <summary>
+    /// Possible file types inside a container.
+    /// </summary>
+    public enum FileType
     {
-        [Test]
-        public void TestVersionNotNull()
-        {
-            Assert.That(LibVersion.GetVersion(), Is.Not.Null);
-        }
+        /// <summary>
+        /// Empty file.
+        /// </summary>
+        Empty,
+
+        /// <summary>
+        /// Dummy file. (Only found in PS3).
+        /// </summary>
+        Dummy,
+
+        /// <summary>
+        /// Normal (uncompressed) file.
+        /// </summary>
+        Normal,
+
+        /// <summary>
+        /// Compressed file.
+        /// </summary>
+        Compressed,
+
+        /// <summary>
+        /// Compressed file (other endianness).
+        /// </summary>
+        CompressedAlternateEndian,
     }
 }
