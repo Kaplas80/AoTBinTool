@@ -23,6 +23,8 @@ namespace AoTBinTool
     using System.Collections.Generic;
     using System.IO;
     using AoTBinLib.Converters;
+    using AoTBinTool.Options;
+    using CommandLine;
     using Yarhl.FileSystem;
 
     /// <summary>
@@ -36,26 +38,67 @@ namespace AoTBinTool
         /// <param name="args">Application arguments.</param>
         public static void Main(string[] args)
         {
-            string input = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\LINKDATA_EU_A.BIN";
-            string filelist = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\FILELIST_A.txt";
-            string output = @"G:\Games\Attack on Titan Wings of Freedom\LINKDATA\test";
+            Parser.Default.ParseArguments<Options.ExtractOptions, Options.BuildOptions>(args)
+                .WithParsed<Options.ExtractOptions>(Extract)
+                .WithParsed<Options.BuildOptions>(Build);
+        }
 
-            string[] p = File.ReadAllLines(filelist);
-
-            Node n = NodeFactory.FromFile(input);
-            n.TransformWith<BinReader, IList<string>>(p);
-            foreach (Node n1 in Navigator.IterateNodes(n))
+        private static void Extract(ExtractOptions opts)
+        {
+            if (!File.Exists(opts.Input))
             {
-                string outputPath = Path.GetFullPath(string.Concat(output, n1.Path.Substring(n.Path.Length)));
-                if (n1.IsContainer)
+                Console.WriteLine("INPUT FILE NOT FOUND!!");
+                return;
+            }
+
+            if (Directory.Exists(opts.Output))
+            {
+                Console.WriteLine("OUTPUT DIRECTORY ALREADY EXISTS. IT WILL BE DELETED");
+                Console.Write("Continue (y/N)?");
+                string continueValue = Console.ReadLine();
+                if (string.IsNullOrEmpty(continueValue) || !string.Equals(continueValue, "y", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Console.WriteLine("Cancelled by user.");
+                    return;
+                }
+
+                Directory.Delete(opts.Output, true);
+            }
+
+            string[] fileList;
+
+            if (!string.IsNullOrEmpty(opts.FileList) && File.Exists(opts.FileList))
+            {
+                Console.WriteLine($"Using \"{opts.FileList}\" as file list...");
+                fileList = File.ReadAllLines(opts.FileList);
+            }
+            else
+            {
+                fileList = Array.Empty<string>();
+            }
+
+            Console.WriteLine("Reading BIN file...");
+            Node binFile = NodeFactory.FromFile(opts.Input);
+            binFile.TransformWith<BinReader, IList<string>>(fileList);
+
+            foreach (Node node in Navigator.IterateNodes(binFile))
+            {
+                string outputPath = Path.GetFullPath(string.Concat(opts.Output, node.Path.Substring(binFile.Path.Length)));
+                if (node.IsContainer)
                 {
                     Directory.CreateDirectory(outputPath);
                 }
                 else
                 {
-                    n1.Stream.WriteTo(outputPath);
+                    Console.WriteLine($"Writing: {outputPath}");
+                    node.Stream.WriteTo(outputPath);
                 }
             }
+        }
+
+        private static void Build(BuildOptions opts)
+        {
+            throw new NotImplementedException();
         }
     }
 }

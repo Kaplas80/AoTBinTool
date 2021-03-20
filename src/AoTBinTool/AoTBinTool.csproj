@@ -12,4 +12,8 @@
     <ProjectReference Include="../AoTBinLib/AoTBinLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" />
+  </ItemGroup>
+
 </Project>
