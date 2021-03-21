@@ -141,7 +141,7 @@ namespace AoTBinLib.Converters
                     }
                 }
 
-                node.Tags["Index"] = i;
+                node.Tags["Index"] = i + 1;
 
                 if (!string.IsNullOrEmpty(fileSubPath))
                 {
