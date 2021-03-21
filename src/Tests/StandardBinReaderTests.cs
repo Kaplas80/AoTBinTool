@@ -67,7 +67,7 @@ namespace Tests
             using DataStream stream = DataStreamFactory.FromArray(data, 0, data.Length);
             var format = new BinaryFormat(stream);
             var result = reader.Convert(format);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual(FileType.Empty, result.Root.Children[0].Tags["Type"]);
         }
 
@@ -98,7 +98,7 @@ namespace Tests
             var format = new BinaryFormat(stream);
 
             var result = reader.Convert(format);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual(FileType.Dummy, result.Root.Children[0].Tags["Type"]);
         }
 
@@ -116,7 +116,7 @@ namespace Tests
             var format = new BinaryFormat(stream);
 
             var result = reader.Convert(format);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual(FileType.Normal, result.Root.Children[0].Tags["Type"]);
         }
 
@@ -173,7 +173,7 @@ namespace Tests
             var format = new BinaryFormat(stream);
 
             var result = reader.Convert(format);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual(FileType.Compressed, result.Root.Children[0].Tags["Type"]);
         }
 
@@ -248,7 +248,7 @@ namespace Tests
             var format = new BinaryFormat(stream);
 
             var result = reader.Convert(format);
-            Assert.AreEqual(3, result.Root.Children.Count);
+            Assert.AreEqual(2, result.Root.Children.Count);
             Assert.AreEqual(FileType.Normal, result.Root.Children[0].Tags["Type"]);
             Assert.AreEqual(FileType.CompressedAlternateEndian, result.Root.Children[1].Tags["Type"]);
         }
@@ -274,7 +274,7 @@ namespace Tests
             var format = new BinaryFormat(stream);
 
             var result = reader.Convert(format);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual("test", result.Root.Children[0].Name);
             Assert.AreEqual(1, result.Root.Children[0].Children.Count);
             Assert.AreEqual(FileType.Normal, result.Root.Children[0].Children[0].Tags["Type"]);
