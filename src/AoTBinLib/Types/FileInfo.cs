@@ -36,5 +36,10 @@ namespace AoTBinLib.Types
         /// Gets or sets the file type.
         /// </summary>
         public FileType Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the file index inside the archive.
+        /// </summary>
+        public int Index { get; set; }
     }
 }

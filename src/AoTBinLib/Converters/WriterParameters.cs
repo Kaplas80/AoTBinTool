@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2021 Kaplas
+// Copyright (c) 2021 Kaplas
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,33 +17,23 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
-namespace AoTBinTool.Options
+namespace AoTBinLib.Converters
 {
-    using CommandLine;
+    using Yarhl.IO;
 
     /// <summary>
-    /// Build BIN archive.
+    /// Parameters needed for BIN writing.
     /// </summary>
-    [Verb("build", HelpText = "Build BIN archive.")]
-    public class BuildOptions
+    public class WriterParameters
     {
         /// <summary>
-        /// Gets or sets the input directory.
+        /// Gets or sets the endianness mode of the file.
         /// </summary>
-        [Option("input", Required = true, HelpText = "Input directory.")]
-        public string Input { get; set; }
+        public EndiannessMode Endianness { get; set; }
 
         /// <summary>
-        /// Gets or sets the output BIN file.
+        /// Gets or sets the stream to write to.
         /// </summary>
-        [Option("output", Required = true, HelpText = "Output BIN file.")]
-        public string Output { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the output file will use big endian.
-        /// </summary>
-        [Option("big-endian", Required = false, HelpText = "Create using Big Endian (for PS3).")]
-        public bool BigEndian { get; set; }
+        public DataStream Stream { get; set; }
     }
 }

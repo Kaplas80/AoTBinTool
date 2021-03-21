@@ -25,7 +25,7 @@ namespace AoTBinLib.Converters
     using AoTBinLib.Enums;
     using AoTBinLib.Exceptions;
     using AoTBinLib.Types;
-    using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+    using Ionic.Zlib;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
     using Yarhl.IO;
@@ -141,6 +141,8 @@ namespace AoTBinLib.Converters
                     }
                 }
 
+                node.Tags["Index"] = i;
+
                 if (!string.IsNullOrEmpty(fileSubPath))
                 {
                     NodeFactory.CreateContainersForChild(result.Root, fileSubPath, node);
@@ -154,11 +156,11 @@ namespace AoTBinLib.Converters
             return result;
         }
 
-        private static DataStream Inflate(Stream source, EndiannessMode endianness)
+        private static DataStream Inflate(DataStream source, EndiannessMode endianness)
         {
-            DataStream result = DataStreamFactory.FromMemory();
+            DataStream dest = DataStreamFactory.FromMemory();
 
-            source.Seek(0, SeekOrigin.Begin);
+            source.Seek(0);
             var reader = new DataReader(source)
             {
                 Endianness = endianness,
@@ -169,23 +171,20 @@ namespace AoTBinLib.Converters
 
             while (chunkSize != 0)
             {
-                byte[] compressedData = reader.ReadBytes(chunkSize);
-                byte[] outputData = new byte[32768];
+                using var zlibStream = new ZlibStream(dest, CompressionMode.Decompress, true);
+                source.WriteSegmentTo(source.Position, chunkSize, zlibStream);
+                zlibStream.Close();
 
-                DataStream compressedChunk = DataStreamFactory.FromArray(compressedData, 0, chunkSize);
-                using var inflaterStream = new InflaterInputStream(compressedChunk);
-                int read = inflaterStream.Read(outputData, 0, 32768);
-                result.Write(outputData, 0, read);
-
+                source.Seek(chunkSize, SeekOrigin.Current);
                 chunkSize = reader.ReadInt32();
             }
 
-            if (result.Length != size)
+            if (dest.Length != size)
             {
                 throw new ExtractionException("Result size doesn't match with expected size.");
             }
 
-            return result;
+            return dest;
         }
     }
 }
