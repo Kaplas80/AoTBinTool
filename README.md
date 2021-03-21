@@ -10,10 +10,18 @@ It is compatible with:
 
 ## Usage
 
-### Extract files
+### Extract files from BIN
 
 ```
 ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt]
 ```
 
 `--file-list` parameter is optional.
+
+### Create BIN archive
+
+```
+./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian]
+```
+
+`--big-endian` parameter is optional. Use it if BIN file is for PS3.

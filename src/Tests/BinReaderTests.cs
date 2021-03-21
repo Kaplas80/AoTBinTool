@@ -58,7 +58,7 @@ namespace Tests
             var littleEndianFormat = new BinaryFormat(littleEndianStream);
 
             var result = reader.Convert(littleEndianFormat);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual(FileType.Normal, result.Root.Children[0].Tags["Type"]);
 
             byte[] bigEndianData =
@@ -71,7 +71,7 @@ namespace Tests
             var bigEndianFormat = new BinaryFormat(bigEndianStream);
 
             result = reader.Convert(bigEndianFormat);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual(FileType.Normal, result.Root.Children[0].Tags["Type"]);
         }
 
@@ -93,7 +93,7 @@ namespace Tests
             var format = new BinaryFormat(stream);
 
             var result = reader.Convert(format);
-            Assert.AreEqual(2, result.Root.Children.Count);
+            Assert.AreEqual(1, result.Root.Children.Count);
             Assert.AreEqual("test", result.Root.Children[0].Name);
             Assert.AreEqual(1, result.Root.Children[0].Children.Count);
             Assert.AreEqual(FileType.Normal, result.Root.Children[0].Children[0].Tags["Type"]);
