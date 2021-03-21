@@ -48,6 +48,7 @@ namespace AoTBinLib.Converters
         private WriterParameters _params = new ()
         {
             Endianness = EndiannessMode.LittleEndian,
+            BlockSize = 0x800,
             Stream = DataStreamFactory.FromMemory(),
         };
 
@@ -76,35 +77,40 @@ namespace AoTBinLib.Converters
 
             byte[] alternateEndianDataFile = File.ReadAllBytes("CompressedAlternateEndian.bin");
 
+            _params.Stream ??= DataStreamFactory.FromMemory();
+
             _params.Stream.Seek(0);
             var writer = new DataWriter(_params.Stream)
             {
                 Endianness = _params.Endianness,
             };
 
+            if (_params.BlockSize == 0)
+            {
+                _params.BlockSize = 0x800;
+            }
+
             BinFileHeader header = new BinFileHeader
             {
                 MagicNumber = 0x00077DF9,
-                BlockSize = 0x800,
+                BlockSize = _params.BlockSize,
                 FileCount = source.Root.Children.Count,
                 Padding = 0,
             };
 
             writer.WriteOfType(header);
-
-            long currentOffset = (long)Math.Ceiling((0x10 + (source.Root.Children.Count * 0x10)) / (double)header.BlockSize) * header.BlockSize;
+            int headerSize = 0x10 + (header.FileCount * 0x10);
+            writer.Stream.SetLength(headerSize);
 
             for (int i = 0; i < source.Root.Children.Count; i++)
             {
-                if (writer.Stream.Length < currentOffset)
-                {
-                    writer.Stream.SetLength(currentOffset);
-                }
-
                 Node node = source.Root.Children[i];
-                writer.Stream.Seek(0x10 + (i * 0x10), SeekOrigin.Begin);
 
-                long startBlock = currentOffset / header.BlockSize;
+                writer.Stream.Seek(0, SeekOrigin.End);
+                writer.WritePadding(0x00, header.BlockSize);
+                long startBlock = writer.Stream.Position / header.BlockSize;
+
+                writer.Stream.Seek(0x10 + (i * 0x10), SeekOrigin.Begin);
                 writer.Write(startBlock);
 
                 FileType type = node.Tags["Type"];
@@ -113,29 +119,25 @@ namespace AoTBinLib.Converters
                     case FileType.Empty:
                         writer.Write(0); // size
                         writer.Write(0); // inflated size
-                        writer.Stream.Seek(currentOffset, SeekOrigin.Begin);
                         break;
                     case FileType.Dummy:
                         writer.Write(0x70); // size
                         writer.Write(0x835F837E); // inflated size
-                        writer.Stream.Seek(currentOffset, SeekOrigin.Begin);
+                        writer.Stream.Seek(0, SeekOrigin.End);
                         writer.Write(_dummy);
-                        writer.WritePadding(0x00, header.BlockSize);
                         break;
                     case FileType.Normal:
                         writer.Write((int)node.Stream.Length); // size
                         writer.Write(0); // inflated size
-                        writer.Stream.Seek(currentOffset, SeekOrigin.Begin);
+                        writer.Stream.Seek(0, SeekOrigin.End);
                         node.Stream.WriteTo(writer.Stream);
-                        writer.WritePadding(0x00, header.BlockSize);
                         break;
                     case FileType.Compressed:
                         DataStream deflatedStream = Deflate(node.Stream, _params.Endianness);
                         writer.Write((int)deflatedStream.Length); // size
                         writer.Write((int)node.Stream.Length); // inflated size
-                        writer.Stream.Seek(currentOffset, SeekOrigin.Begin);
+                        writer.Stream.Seek(0, SeekOrigin.End);
                         deflatedStream.WriteTo(writer.Stream);
-                        writer.WritePadding(0x00, header.BlockSize);
                         break;
                     case FileType.CompressedAlternateEndian:
                         var alternateEndianness = _params.Endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
@@ -143,15 +145,12 @@ namespace AoTBinLib.Converters
                         writer.Endianness = alternateEndianness;
                         writer.Write(0x00002910); // inflated size
                         writer.Endianness = _params.Endianness;
-                        writer.Stream.Seek(currentOffset, SeekOrigin.Begin);
+                        writer.Stream.Seek(0, SeekOrigin.End);
                         writer.Write(alternateEndianDataFile);
-                        writer.WritePadding(0x00, header.BlockSize);
                         break;
                     default:
                         throw new FormatException($"Unsupported file type: {type}");
                 }
-
-                currentOffset = writer.Stream.Position;
             }
 
             return new BinaryFormat(_params.Stream);
