@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.BinReader.html",
-          "hash": "Avs8h5uffko2gQdSXyUOAA=="
+          "hash": "AgjSd1RVbxG/oR00+FQyGQ=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.ReaderParameters.html",
-          "hash": "DHkOw/EkzBdby+SdlYcDSQ=="
+          "hash": "z9594aQYyDoQzxzGI9MUWg=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinReader.html",
-          "hash": "L+oiKfGF/fnw/V/867cxug=="
+          "hash": "jEH1nZu+qgp9wcQs7udEbA=="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinWriter.html",
-          "hash": "9UqOw2IwJBlfv+8nxnZ/kg=="
+          "hash": "ck5sRe91hSB356N9j/vrqA=="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.WriterParameters.html",
-          "hash": "TmQAOG8QcZdrizau/CUo3Q=="
+          "hash": "8hCkEqgY6xibxrThTwQvaw=="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Enums.FileType.html",
-          "hash": "0D6Ho5DW8CdfesWeeLHrmQ=="
+          "hash": "5g0+mv4bcHzm3HKQgF9u8Q=="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Exceptions.ExtractionException.html",
-          "hash": "Xz6wbkJaVCZL0608gbja6w=="
+          "hash": "xDnigMNBWqJqBoB76XdrgA=="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.BinFileHeader.html",
-          "hash": "Aq4z44jixltXcCRb7SD2kA=="
+          "hash": "nMSXsZ6EMgJMOqvzZ++CdA=="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.FileInfo.html",
-          "hash": "ugUj9eey4YrJ9OuBEgXujA=="
+          "hash": "Hp/EEs+yMl27zJs+I52SOw=="
         }
       },
       "is_incremental": false,
@@ -198,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "2230v5yZS1kFKS3b+Ejjpg=="
+          "hash": "qCwvO07xW2KDJxz2gMZ/aQ=="
         }
       },
       "is_incremental": false,
