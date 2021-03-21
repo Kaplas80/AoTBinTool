@@ -20,11 +20,13 @@
 
 namespace AoTBinLib.Types
 {
+    using System.Diagnostics.CodeAnalysis;
     using AoTBinLib.Enums;
 
     /// <summary>
     /// Extracted file info.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class FileInfo
     {
         /// <summary>

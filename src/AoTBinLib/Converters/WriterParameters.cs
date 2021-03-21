@@ -32,6 +32,11 @@ namespace AoTBinLib.Converters
         public EndiannessMode Endianness { get; set; }
 
         /// <summary>
+        /// Gets or sets the BIN block size. Default is 0x800.
+        /// </summary>
+        public int BlockSize { get; set; }
+
+        /// <summary>
         /// Gets or sets the stream to write to.
         /// </summary>
         public DataStream Stream { get; set; }
