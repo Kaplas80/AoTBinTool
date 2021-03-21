@@ -7,7 +7,7 @@
   "api/AoTBinLib.Converters.html": {
     "href": "api/AoTBinLib.Converters.html",
     "title": "Namespace AoTBinLib.Converters | AoTBinTool",
-    "keywords": "Namespace AoTBinLib.Converters Classes BinReader Attack on Titan BIN reader. ReaderParameters Parameters needed for BIN reading. StandardBinReader Attack on Titan standard BIN reader."
+    "keywords": "Namespace AoTBinLib.Converters Classes BinReader Attack on Titan BIN reader. ReaderParameters Parameters needed for BIN reading. StandardBinReader Attack on Titan standard BIN reader. StandardBinWriter Attack on Titan standard BIN writer. WriterParameters Parameters needed for BIN writing."
   },
   "api/AoTBinLib.Converters.ReaderParameters.html": {
     "href": "api/AoTBinLib.Converters.ReaderParameters.html",
@@ -18,6 +18,16 @@
     "href": "api/AoTBinLib.Converters.StandardBinReader.html",
     "title": "Class StandardBinReader | AoTBinTool",
     "keywords": "Class StandardBinReader Attack on Titan standard BIN reader. Inheritance Object StandardBinReader Implements IInitializer < ReaderParameters > Namespace : AoTBinLib.Converters Assembly : AoTBinLib.dll Syntax public class StandardBinReader : IConverter<BinaryFormat, NodeContainerFormat>, IInitializer<ReaderParameters> Methods | Improve this Doc View Source Convert(BinaryFormat) Deserializes a BIN archive. Declaration public NodeContainerFormat Convert(BinaryFormat source) Parameters Type Name Description BinaryFormat source BIN archive as BinaryFormat. Returns Type Description NodeContainerFormat The NodeContainerFormat. | Improve this Doc View Source Initialize(ReaderParameters) Converter initializer. Declaration public void Initialize(ReaderParameters parameters) Parameters Type Name Description ReaderParameters parameters Reader configuration. Implements IInitializer<>"
+  },
+  "api/AoTBinLib.Converters.StandardBinWriter.html": {
+    "href": "api/AoTBinLib.Converters.StandardBinWriter.html",
+    "title": "Class StandardBinWriter | AoTBinTool",
+    "keywords": "Class StandardBinWriter Attack on Titan standard BIN writer. Inheritance Object StandardBinWriter Implements IInitializer < WriterParameters > Namespace : AoTBinLib.Converters Assembly : AoTBinLib.dll Syntax public class StandardBinWriter : IConverter<NodeContainerFormat, BinaryFormat>, IInitializer<WriterParameters> Methods | Improve this Doc View Source Convert(NodeContainerFormat) Serializes a BIN archive. Declaration public BinaryFormat Convert(NodeContainerFormat source) Parameters Type Name Description NodeContainerFormat source Collection of files as NodeContainerFormat. Returns Type Description BinaryFormat The BinaryFormat. | Improve this Doc View Source Initialize(WriterParameters) Converter initializer. Declaration public void Initialize(WriterParameters parameters) Parameters Type Name Description WriterParameters parameters Writer configuration. Implements IInitializer<>"
+  },
+  "api/AoTBinLib.Converters.WriterParameters.html": {
+    "href": "api/AoTBinLib.Converters.WriterParameters.html",
+    "title": "Class WriterParameters | AoTBinTool",
+    "keywords": "Class WriterParameters Parameters needed for BIN writing. Inheritance Object WriterParameters Namespace : AoTBinLib.Converters Assembly : AoTBinLib.dll Syntax public class WriterParameters : object Properties | Improve this Doc View Source BlockSize Gets or sets the BIN block size. Default is 0x800. Declaration public int BlockSize { get; set; } Property Value Type Description Int32 | Improve this Doc View Source Endianness Gets or sets the endianness mode of the file. Declaration public EndiannessMode Endianness { get; set; } Property Value Type Description EndiannessMode | Improve this Doc View Source Stream Gets or sets the stream to write to. Declaration public DataStream Stream { get; set; } Property Value Type Description DataStream"
   },
   "api/AoTBinLib.Enums.FileType.html": {
     "href": "api/AoTBinLib.Enums.FileType.html",
@@ -47,7 +57,7 @@
   "api/AoTBinLib.Types.FileInfo.html": {
     "href": "api/AoTBinLib.Types.FileInfo.html",
     "title": "Class FileInfo | AoTBinTool",
-    "keywords": "Class FileInfo Extracted file info. Inheritance Object FileInfo Namespace : AoTBinLib.Types Assembly : AoTBinLib.dll Syntax public class FileInfo : object Properties | Improve this Doc View Source Name Gets or sets the file name. Declaration public string Name { get; set; } Property Value Type Description String | Improve this Doc View Source Type Gets or sets the file type. Declaration public FileType Type { get; set; } Property Value Type Description FileType"
+    "keywords": "Class FileInfo Extracted file info. Inheritance Object FileInfo Namespace : AoTBinLib.Types Assembly : AoTBinLib.dll Syntax public class FileInfo : object Properties | Improve this Doc View Source Index Gets or sets the file index inside the archive. Declaration public int Index { get; set; } Property Value Type Description Int32 | Improve this Doc View Source Name Gets or sets the file name. Declaration public string Name { get; set; } Property Value Type Description String | Improve this Doc View Source Type Gets or sets the file type. Declaration public FileType Type { get; set; } Property Value Type Description FileType"
   },
   "api/AoTBinLib.Types.html": {
     "href": "api/AoTBinLib.Types.html",
@@ -62,7 +72,7 @@
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
     "title": "vNext (March 20, 2021) | AoTBinTool",
-    "keywords": "vNext (March 20, 2021) As part of this release we had 1 issue closed. Enhancement #1 Extract BIN archives"
+    "keywords": "vNext (March 20, 2021) As part of this release we had 2 issues closed. Enhancements #2 Feature/write bin files #1 Extract BIN archives"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
@@ -77,11 +87,11 @@
   "index.html": {
     "href": "index.html",
     "title": "AoTBinTool | AoTBinTool",
-    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional."
+    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3."
   },
   "README.html": {
     "href": "README.html",
     "title": "AoTBinTool | AoTBinTool",
-    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional."
+    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3."
   }
 }

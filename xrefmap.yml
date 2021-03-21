@@ -106,6 +106,83 @@ references:
   isSpec: "True"
   fullName: AoTBinLib.Converters.StandardBinReader.Initialize
   nameWithType: StandardBinReader.Initialize
+- uid: AoTBinLib.Converters.StandardBinWriter
+  name: StandardBinWriter
+  href: api/AoTBinLib.Converters.StandardBinWriter.html
+  commentId: T:AoTBinLib.Converters.StandardBinWriter
+  fullName: AoTBinLib.Converters.StandardBinWriter
+  nameWithType: StandardBinWriter
+- uid: AoTBinLib.Converters.StandardBinWriter.Convert(NodeContainerFormat)
+  name: Convert(NodeContainerFormat)
+  href: api/AoTBinLib.Converters.StandardBinWriter.html#AoTBinLib_Converters_StandardBinWriter_Convert_NodeContainerFormat_
+  commentId: M:AoTBinLib.Converters.StandardBinWriter.Convert(NodeContainerFormat)
+  fullName: AoTBinLib.Converters.StandardBinWriter.Convert(NodeContainerFormat)
+  nameWithType: StandardBinWriter.Convert(NodeContainerFormat)
+- uid: AoTBinLib.Converters.StandardBinWriter.Convert*
+  name: Convert
+  href: api/AoTBinLib.Converters.StandardBinWriter.html#AoTBinLib_Converters_StandardBinWriter_Convert_
+  commentId: Overload:AoTBinLib.Converters.StandardBinWriter.Convert
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.StandardBinWriter.Convert
+  nameWithType: StandardBinWriter.Convert
+- uid: AoTBinLib.Converters.StandardBinWriter.Initialize(AoTBinLib.Converters.WriterParameters)
+  name: Initialize(WriterParameters)
+  href: api/AoTBinLib.Converters.StandardBinWriter.html#AoTBinLib_Converters_StandardBinWriter_Initialize_AoTBinLib_Converters_WriterParameters_
+  commentId: M:AoTBinLib.Converters.StandardBinWriter.Initialize(AoTBinLib.Converters.WriterParameters)
+  fullName: AoTBinLib.Converters.StandardBinWriter.Initialize(AoTBinLib.Converters.WriterParameters)
+  nameWithType: StandardBinWriter.Initialize(WriterParameters)
+- uid: AoTBinLib.Converters.StandardBinWriter.Initialize*
+  name: Initialize
+  href: api/AoTBinLib.Converters.StandardBinWriter.html#AoTBinLib_Converters_StandardBinWriter_Initialize_
+  commentId: Overload:AoTBinLib.Converters.StandardBinWriter.Initialize
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.StandardBinWriter.Initialize
+  nameWithType: StandardBinWriter.Initialize
+- uid: AoTBinLib.Converters.WriterParameters
+  name: WriterParameters
+  href: api/AoTBinLib.Converters.WriterParameters.html
+  commentId: T:AoTBinLib.Converters.WriterParameters
+  fullName: AoTBinLib.Converters.WriterParameters
+  nameWithType: WriterParameters
+- uid: AoTBinLib.Converters.WriterParameters.BlockSize
+  name: BlockSize
+  href: api/AoTBinLib.Converters.WriterParameters.html#AoTBinLib_Converters_WriterParameters_BlockSize
+  commentId: P:AoTBinLib.Converters.WriterParameters.BlockSize
+  fullName: AoTBinLib.Converters.WriterParameters.BlockSize
+  nameWithType: WriterParameters.BlockSize
+- uid: AoTBinLib.Converters.WriterParameters.BlockSize*
+  name: BlockSize
+  href: api/AoTBinLib.Converters.WriterParameters.html#AoTBinLib_Converters_WriterParameters_BlockSize_
+  commentId: Overload:AoTBinLib.Converters.WriterParameters.BlockSize
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.WriterParameters.BlockSize
+  nameWithType: WriterParameters.BlockSize
+- uid: AoTBinLib.Converters.WriterParameters.Endianness
+  name: Endianness
+  href: api/AoTBinLib.Converters.WriterParameters.html#AoTBinLib_Converters_WriterParameters_Endianness
+  commentId: P:AoTBinLib.Converters.WriterParameters.Endianness
+  fullName: AoTBinLib.Converters.WriterParameters.Endianness
+  nameWithType: WriterParameters.Endianness
+- uid: AoTBinLib.Converters.WriterParameters.Endianness*
+  name: Endianness
+  href: api/AoTBinLib.Converters.WriterParameters.html#AoTBinLib_Converters_WriterParameters_Endianness_
+  commentId: Overload:AoTBinLib.Converters.WriterParameters.Endianness
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.WriterParameters.Endianness
+  nameWithType: WriterParameters.Endianness
+- uid: AoTBinLib.Converters.WriterParameters.Stream
+  name: Stream
+  href: api/AoTBinLib.Converters.WriterParameters.html#AoTBinLib_Converters_WriterParameters_Stream
+  commentId: P:AoTBinLib.Converters.WriterParameters.Stream
+  fullName: AoTBinLib.Converters.WriterParameters.Stream
+  nameWithType: WriterParameters.Stream
+- uid: AoTBinLib.Converters.WriterParameters.Stream*
+  name: Stream
+  href: api/AoTBinLib.Converters.WriterParameters.html#AoTBinLib_Converters_WriterParameters_Stream_
+  commentId: Overload:AoTBinLib.Converters.WriterParameters.Stream
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.WriterParameters.Stream
+  nameWithType: WriterParameters.Stream
 - uid: AoTBinLib.Enums
   name: AoTBinLib.Enums
   href: api/AoTBinLib.Enums.html
@@ -261,6 +338,19 @@ references:
   commentId: T:AoTBinLib.Types.FileInfo
   fullName: AoTBinLib.Types.FileInfo
   nameWithType: FileInfo
+- uid: AoTBinLib.Types.FileInfo.Index
+  name: Index
+  href: api/AoTBinLib.Types.FileInfo.html#AoTBinLib_Types_FileInfo_Index
+  commentId: P:AoTBinLib.Types.FileInfo.Index
+  fullName: AoTBinLib.Types.FileInfo.Index
+  nameWithType: FileInfo.Index
+- uid: AoTBinLib.Types.FileInfo.Index*
+  name: Index
+  href: api/AoTBinLib.Types.FileInfo.html#AoTBinLib_Types_FileInfo_Index_
+  commentId: Overload:AoTBinLib.Types.FileInfo.Index
+  isSpec: "True"
+  fullName: AoTBinLib.Types.FileInfo.Index
+  nameWithType: FileInfo.Index
 - uid: AoTBinLib.Types.FileInfo.Name
   name: Name
   href: api/AoTBinLib.Types.FileInfo.html#AoTBinLib_Types_FileInfo_Name

@@ -94,10 +94,14 @@
 <li>Attack on Titan II (PC)</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<h3 id="extract-files">Extract files</h3>
+<h3 id="extract-files-from-bin">Extract files from BIN</h3>
 <pre><code>./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt]
 </code></pre>
 <p><code>--file-list</code> parameter is optional.</p>
+<h3 id="create-bin-archive">Create BIN archive</h3>
+<pre><code>./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian]
+</code></pre>
+<p><code>--big-endian</code> parameter is optional. Use it if BIN file is for PS3.</p>
 </article>
           </div>
           
