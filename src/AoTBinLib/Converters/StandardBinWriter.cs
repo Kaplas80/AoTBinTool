@@ -138,6 +138,7 @@ namespace AoTBinLib.Converters
                         writer.Write((int)node.Stream.Length); // inflated size
                         writer.Stream.Seek(0, SeekOrigin.End);
                         deflatedStream.WriteTo(writer.Stream);
+                        deflatedStream.Dispose();
                         break;
                     case FileType.CompressedAlternateEndian:
                         var alternateEndianness = _params.Endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
