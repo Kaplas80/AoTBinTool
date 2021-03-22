@@ -21,6 +21,7 @@
 namespace AoTBinLib.Converters
 {
     using System;
+    using System.Threading.Tasks;
     using AoTBinLib.Enums;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
@@ -51,7 +52,7 @@ namespace AoTBinLib.Converters
                 throw new ArgumentNullException(nameof(source));
             }
 
-            foreach (Node node in Navigator.IterateNodes(source.Root))
+            Parallel.ForEach(source.Root.Children, node =>
             {
                 node.Tags["InflatedSize"] = node.Stream.Length;
                 if (node.Tags["Type"] == FileType.Compressed)
@@ -63,7 +64,7 @@ namespace AoTBinLib.Converters
                     var alternateEndianness = _endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
                     node.TransformWith<Compressor, EndiannessMode>(alternateEndianness);
                 }
-            }
+            });
 
             return source;
         }
