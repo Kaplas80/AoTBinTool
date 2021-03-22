@@ -7,41 +7,70 @@ references:
   commentId: N:AoTBinLib.Converters
   fullName: AoTBinLib.Converters
   nameWithType: AoTBinLib.Converters
-- uid: AoTBinLib.Converters.BinReader
-  name: BinReader
-  href: api/AoTBinLib.Converters.BinReader.html
-  commentId: T:AoTBinLib.Converters.BinReader
-  fullName: AoTBinLib.Converters.BinReader
-  nameWithType: BinReader
-- uid: AoTBinLib.Converters.BinReader.Convert(BinaryFormat)
+- uid: AoTBinLib.Converters.Compressor
+  name: Compressor
+  href: api/AoTBinLib.Converters.Compressor.html
+  commentId: T:AoTBinLib.Converters.Compressor
+  fullName: AoTBinLib.Converters.Compressor
+  nameWithType: Compressor
+- uid: AoTBinLib.Converters.Compressor.Convert(BinaryFormat)
   name: Convert(BinaryFormat)
-  href: api/AoTBinLib.Converters.BinReader.html#AoTBinLib_Converters_BinReader_Convert_BinaryFormat_
-  commentId: M:AoTBinLib.Converters.BinReader.Convert(BinaryFormat)
-  fullName: AoTBinLib.Converters.BinReader.Convert(BinaryFormat)
-  nameWithType: BinReader.Convert(BinaryFormat)
-- uid: AoTBinLib.Converters.BinReader.Convert*
+  href: api/AoTBinLib.Converters.Compressor.html#AoTBinLib_Converters_Compressor_Convert_BinaryFormat_
+  commentId: M:AoTBinLib.Converters.Compressor.Convert(BinaryFormat)
+  fullName: AoTBinLib.Converters.Compressor.Convert(BinaryFormat)
+  nameWithType: Compressor.Convert(BinaryFormat)
+- uid: AoTBinLib.Converters.Compressor.Convert*
   name: Convert
-  href: api/AoTBinLib.Converters.BinReader.html#AoTBinLib_Converters_BinReader_Convert_
-  commentId: Overload:AoTBinLib.Converters.BinReader.Convert
+  href: api/AoTBinLib.Converters.Compressor.html#AoTBinLib_Converters_Compressor_Convert_
+  commentId: Overload:AoTBinLib.Converters.Compressor.Convert
   isSpec: "True"
-  fullName: AoTBinLib.Converters.BinReader.Convert
-  nameWithType: BinReader.Convert
-- uid: AoTBinLib.Converters.BinReader.Initialize(IList{System.String})
-  name: Initialize(IList<String>)
-  href: api/AoTBinLib.Converters.BinReader.html#AoTBinLib_Converters_BinReader_Initialize_IList_System_String__
-  commentId: M:AoTBinLib.Converters.BinReader.Initialize(IList{System.String})
-  name.vb: Initialize(IList(Of String))
-  fullName: AoTBinLib.Converters.BinReader.Initialize(IList<System.String>)
-  fullName.vb: AoTBinLib.Converters.BinReader.Initialize(IList(Of System.String))
-  nameWithType: BinReader.Initialize(IList<String>)
-  nameWithType.vb: BinReader.Initialize(IList(Of String))
-- uid: AoTBinLib.Converters.BinReader.Initialize*
+  fullName: AoTBinLib.Converters.Compressor.Convert
+  nameWithType: Compressor.Convert
+- uid: AoTBinLib.Converters.Compressor.Initialize(EndiannessMode)
+  name: Initialize(EndiannessMode)
+  href: api/AoTBinLib.Converters.Compressor.html#AoTBinLib_Converters_Compressor_Initialize_EndiannessMode_
+  commentId: M:AoTBinLib.Converters.Compressor.Initialize(EndiannessMode)
+  fullName: AoTBinLib.Converters.Compressor.Initialize(EndiannessMode)
+  nameWithType: Compressor.Initialize(EndiannessMode)
+- uid: AoTBinLib.Converters.Compressor.Initialize*
   name: Initialize
-  href: api/AoTBinLib.Converters.BinReader.html#AoTBinLib_Converters_BinReader_Initialize_
-  commentId: Overload:AoTBinLib.Converters.BinReader.Initialize
+  href: api/AoTBinLib.Converters.Compressor.html#AoTBinLib_Converters_Compressor_Initialize_
+  commentId: Overload:AoTBinLib.Converters.Compressor.Initialize
   isSpec: "True"
-  fullName: AoTBinLib.Converters.BinReader.Initialize
-  nameWithType: BinReader.Initialize
+  fullName: AoTBinLib.Converters.Compressor.Initialize
+  nameWithType: Compressor.Initialize
+- uid: AoTBinLib.Converters.Decompressor
+  name: Decompressor
+  href: api/AoTBinLib.Converters.Decompressor.html
+  commentId: T:AoTBinLib.Converters.Decompressor
+  fullName: AoTBinLib.Converters.Decompressor
+  nameWithType: Decompressor
+- uid: AoTBinLib.Converters.Decompressor.Convert(BinaryFormat)
+  name: Convert(BinaryFormat)
+  href: api/AoTBinLib.Converters.Decompressor.html#AoTBinLib_Converters_Decompressor_Convert_BinaryFormat_
+  commentId: M:AoTBinLib.Converters.Decompressor.Convert(BinaryFormat)
+  fullName: AoTBinLib.Converters.Decompressor.Convert(BinaryFormat)
+  nameWithType: Decompressor.Convert(BinaryFormat)
+- uid: AoTBinLib.Converters.Decompressor.Convert*
+  name: Convert
+  href: api/AoTBinLib.Converters.Decompressor.html#AoTBinLib_Converters_Decompressor_Convert_
+  commentId: Overload:AoTBinLib.Converters.Decompressor.Convert
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.Decompressor.Convert
+  nameWithType: Decompressor.Convert
+- uid: AoTBinLib.Converters.Decompressor.Initialize(EndiannessMode)
+  name: Initialize(EndiannessMode)
+  href: api/AoTBinLib.Converters.Decompressor.html#AoTBinLib_Converters_Decompressor_Initialize_EndiannessMode_
+  commentId: M:AoTBinLib.Converters.Decompressor.Initialize(EndiannessMode)
+  fullName: AoTBinLib.Converters.Decompressor.Initialize(EndiannessMode)
+  nameWithType: Decompressor.Initialize(EndiannessMode)
+- uid: AoTBinLib.Converters.Decompressor.Initialize*
+  name: Initialize
+  href: api/AoTBinLib.Converters.Decompressor.html#AoTBinLib_Converters_Decompressor_Initialize_
+  commentId: Overload:AoTBinLib.Converters.Decompressor.Initialize
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.Decompressor.Initialize
+  nameWithType: Decompressor.Initialize
 - uid: AoTBinLib.Converters.ReaderParameters
   name: ReaderParameters
   href: api/AoTBinLib.Converters.ReaderParameters.html
@@ -74,6 +103,70 @@ references:
   isSpec: "True"
   fullName: AoTBinLib.Converters.ReaderParameters.FileNames
   nameWithType: ReaderParameters.FileNames
+- uid: AoTBinLib.Converters.StandardBinCompressor
+  name: StandardBinCompressor
+  href: api/AoTBinLib.Converters.StandardBinCompressor.html
+  commentId: T:AoTBinLib.Converters.StandardBinCompressor
+  fullName: AoTBinLib.Converters.StandardBinCompressor
+  nameWithType: StandardBinCompressor
+- uid: AoTBinLib.Converters.StandardBinCompressor.Convert(NodeContainerFormat)
+  name: Convert(NodeContainerFormat)
+  href: api/AoTBinLib.Converters.StandardBinCompressor.html#AoTBinLib_Converters_StandardBinCompressor_Convert_NodeContainerFormat_
+  commentId: M:AoTBinLib.Converters.StandardBinCompressor.Convert(NodeContainerFormat)
+  fullName: AoTBinLib.Converters.StandardBinCompressor.Convert(NodeContainerFormat)
+  nameWithType: StandardBinCompressor.Convert(NodeContainerFormat)
+- uid: AoTBinLib.Converters.StandardBinCompressor.Convert*
+  name: Convert
+  href: api/AoTBinLib.Converters.StandardBinCompressor.html#AoTBinLib_Converters_StandardBinCompressor_Convert_
+  commentId: Overload:AoTBinLib.Converters.StandardBinCompressor.Convert
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.StandardBinCompressor.Convert
+  nameWithType: StandardBinCompressor.Convert
+- uid: AoTBinLib.Converters.StandardBinCompressor.Initialize(EndiannessMode)
+  name: Initialize(EndiannessMode)
+  href: api/AoTBinLib.Converters.StandardBinCompressor.html#AoTBinLib_Converters_StandardBinCompressor_Initialize_EndiannessMode_
+  commentId: M:AoTBinLib.Converters.StandardBinCompressor.Initialize(EndiannessMode)
+  fullName: AoTBinLib.Converters.StandardBinCompressor.Initialize(EndiannessMode)
+  nameWithType: StandardBinCompressor.Initialize(EndiannessMode)
+- uid: AoTBinLib.Converters.StandardBinCompressor.Initialize*
+  name: Initialize
+  href: api/AoTBinLib.Converters.StandardBinCompressor.html#AoTBinLib_Converters_StandardBinCompressor_Initialize_
+  commentId: Overload:AoTBinLib.Converters.StandardBinCompressor.Initialize
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.StandardBinCompressor.Initialize
+  nameWithType: StandardBinCompressor.Initialize
+- uid: AoTBinLib.Converters.StandardBinDecompressor
+  name: StandardBinDecompressor
+  href: api/AoTBinLib.Converters.StandardBinDecompressor.html
+  commentId: T:AoTBinLib.Converters.StandardBinDecompressor
+  fullName: AoTBinLib.Converters.StandardBinDecompressor
+  nameWithType: StandardBinDecompressor
+- uid: AoTBinLib.Converters.StandardBinDecompressor.Convert(NodeContainerFormat)
+  name: Convert(NodeContainerFormat)
+  href: api/AoTBinLib.Converters.StandardBinDecompressor.html#AoTBinLib_Converters_StandardBinDecompressor_Convert_NodeContainerFormat_
+  commentId: M:AoTBinLib.Converters.StandardBinDecompressor.Convert(NodeContainerFormat)
+  fullName: AoTBinLib.Converters.StandardBinDecompressor.Convert(NodeContainerFormat)
+  nameWithType: StandardBinDecompressor.Convert(NodeContainerFormat)
+- uid: AoTBinLib.Converters.StandardBinDecompressor.Convert*
+  name: Convert
+  href: api/AoTBinLib.Converters.StandardBinDecompressor.html#AoTBinLib_Converters_StandardBinDecompressor_Convert_
+  commentId: Overload:AoTBinLib.Converters.StandardBinDecompressor.Convert
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.StandardBinDecompressor.Convert
+  nameWithType: StandardBinDecompressor.Convert
+- uid: AoTBinLib.Converters.StandardBinDecompressor.Initialize(EndiannessMode)
+  name: Initialize(EndiannessMode)
+  href: api/AoTBinLib.Converters.StandardBinDecompressor.html#AoTBinLib_Converters_StandardBinDecompressor_Initialize_EndiannessMode_
+  commentId: M:AoTBinLib.Converters.StandardBinDecompressor.Initialize(EndiannessMode)
+  fullName: AoTBinLib.Converters.StandardBinDecompressor.Initialize(EndiannessMode)
+  nameWithType: StandardBinDecompressor.Initialize(EndiannessMode)
+- uid: AoTBinLib.Converters.StandardBinDecompressor.Initialize*
+  name: Initialize
+  href: api/AoTBinLib.Converters.StandardBinDecompressor.html#AoTBinLib_Converters_StandardBinDecompressor_Initialize_
+  commentId: Overload:AoTBinLib.Converters.StandardBinDecompressor.Initialize
+  isSpec: "True"
+  fullName: AoTBinLib.Converters.StandardBinDecompressor.Initialize
+  nameWithType: StandardBinDecompressor.Initialize
 - uid: AoTBinLib.Converters.StandardBinReader
   name: StandardBinReader
   href: api/AoTBinLib.Converters.StandardBinReader.html

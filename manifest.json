@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "5w0xXGuy2busnseoRTHGZA=="
+          "hash": "Kt3Os33B3HG0OtrNjLFq3Q=="
         }
       },
       "is_incremental": false,
@@ -38,11 +38,23 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/AoTBinLib.Converters.BinReader.yml",
+      "source_relative_path": "api/AoTBinLib.Converters.Compressor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/AoTBinLib.Converters.BinReader.html",
-          "hash": "AgjSd1RVbxG/oR00+FQyGQ=="
+          "relative_path": "api/AoTBinLib.Converters.Compressor.html",
+          "hash": "z/5V9UR//lA5hVa4bAqnYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Converters.Decompressor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Converters.Decompressor.html",
+          "hash": "mzpS3IB2pM92vWgz4nXCrg=="
         }
       },
       "is_incremental": false,
@@ -54,7 +66,31 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.ReaderParameters.html",
-          "hash": "z9594aQYyDoQzxzGI9MUWg=="
+          "hash": "PWpWkxaDyTp5lQGxAD7XpQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Converters.StandardBinCompressor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Converters.StandardBinCompressor.html",
+          "hash": "D1q9YzSnWWjqcWTNObL1qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Converters.StandardBinDecompressor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Converters.StandardBinDecompressor.html",
+          "hash": "/uH7YkThUdFNG7YWbHwg1Q=="
         }
       },
       "is_incremental": false,
@@ -66,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinReader.html",
-          "hash": "jEH1nZu+qgp9wcQs7udEbA=="
+          "hash": "c6rYanBuHQLv5ERWknS5Rg=="
         }
       },
       "is_incremental": false,
@@ -78,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinWriter.html",
-          "hash": "ck5sRe91hSB356N9j/vrqA=="
+          "hash": "kKBmgWNH2Aa37WhwzIJU4g=="
         }
       },
       "is_incremental": false,
@@ -90,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.WriterParameters.html",
-          "hash": "8hCkEqgY6xibxrThTwQvaw=="
+          "hash": "SzFMtGIH/kFvfDc0P8mA/g=="
         }
       },
       "is_incremental": false,
@@ -102,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.html",
-          "hash": "Qu65VaekKl8CXrPfg5PMEQ=="
+          "hash": "+wtOq7ncbGxf384fMpyOKg=="
         }
       },
       "is_incremental": false,
@@ -114,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Enums.FileType.html",
-          "hash": "5g0+mv4bcHzm3HKQgF9u8Q=="
+          "hash": "BGxGDhbw/qMjxuluLOj/0Q=="
         }
       },
       "is_incremental": false,
@@ -126,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Enums.html",
-          "hash": "DHWe05+jLdqqQCCrT/e3MQ=="
+          "hash": "nB8dIjY7EcXsksOOL01yUA=="
         }
       },
       "is_incremental": false,
@@ -138,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Exceptions.ExtractionException.html",
-          "hash": "xDnigMNBWqJqBoB76XdrgA=="
+          "hash": "Ekhk+68hX8zauNFYlXZ7zQ=="
         }
       },
       "is_incremental": false,
@@ -150,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Exceptions.html",
-          "hash": "ski63Gfr4U0N7MbNmGMz9w=="
+          "hash": "936hmxFioT5eD+DG4/5aNg=="
         }
       },
       "is_incremental": false,
@@ -162,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.BinFileHeader.html",
-          "hash": "nMSXsZ6EMgJMOqvzZ++CdA=="
+          "hash": "kCbFNUJYOPGKKjZty2ruyQ=="
         }
       },
       "is_incremental": false,
@@ -174,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.FileInfo.html",
-          "hash": "Hp/EEs+yMl27zJs+I52SOw=="
+          "hash": "jPoxq2Tf0GyGhcO3GwTv3A=="
         }
       },
       "is_incremental": false,
@@ -186,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.html",
-          "hash": "f00m1sVb8xes70Y22fI3jg=="
+          "hash": "fLlP3qrZFINPXh0gNyjphA=="
         }
       },
       "is_incremental": false,
@@ -198,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "qCwvO07xW2KDJxz2gMZ/aQ=="
+          "hash": "60Xxnlho/EhefqTZa/2x8g=="
         }
       },
       "is_incremental": false,
@@ -210,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/toc.html",
-          "hash": "znnIU2fISXlo4wKk4fbP+A=="
+          "hash": "6ln6EAzBxQATukqF4GzvEQ=="
         }
       },
       "is_incremental": false,
@@ -291,7 +327,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "M+Zgg0BG5r8VIhyGEh8sJA=="
+          "hash": "yOYycvaHR4yPi7izp/3y4w=="
         }
       },
       "is_incremental": false,
@@ -330,7 +366,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 13,
+          "total_file_count": 16,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
