@@ -85,7 +85,15 @@ namespace AoTBinTool
 
             Console.Write("Reading BIN file... ");
             Node binFile = NodeFactory.FromFile(opts.Input);
-            binFile.TransformWith<BinReader, IList<string>>(fileList);
+            var endianness = IdentifyEndianness(binFile);
+            var readerParameters = new ReaderParameters
+            {
+                Endianness = endianness,
+                FileNames = fileList,
+            };
+
+            binFile.TransformWith<StandardBinReader, ReaderParameters>(readerParameters)
+                .TransformWith<StandardBinDecompressor, EndiannessMode>(endianness);
             Console.WriteLine("DONE");
 
             Console.Write("Extracting files... ");
@@ -188,10 +196,26 @@ namespace AoTBinTool
             };
 
             Console.Write("Building BIN archive... ");
-            container.TransformWith<StandardBinWriter, WriterParameters>(parameters);
+            container.TransformWith<StandardBinCompressor, EndiannessMode>(parameters.Endianness)
+                .TransformWith<StandardBinWriter, WriterParameters>(parameters);
             stream.Flush();
             stream.Dispose();
             Console.WriteLine("DONE");
+        }
+
+        private static EndiannessMode IdentifyEndianness(Node binFile)
+        {
+            binFile.Stream.PushToPosition(0);
+            var reader = new DataReader(binFile.Stream) { Endianness = EndiannessMode.BigEndian };
+            uint magic = reader.ReadUInt32();
+            binFile.Stream.PopPosition();
+
+            return magic switch
+            {
+                0x00077DF9 => EndiannessMode.BigEndian,
+                0xF97D0700 => EndiannessMode.LittleEndian,
+                _ => throw new FormatException($"Unrecognized file magic number: {magic:X8}"),
+            };
         }
     }
 }
