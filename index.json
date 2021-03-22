@@ -86,8 +86,8 @@
   },
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
-    "title": "vNext (March 22, 2021) | AoTBinTool",
-    "keywords": "vNext (March 22, 2021) As part of this release we had 3 issues closed. Bug #3 Exception in PS3 Japanese files Enhancements #6 Speed up #4 Slow file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
+    "title": "v1.1.0 (March 22, 2021) | AoTBinTool",
+    "keywords": "v1.1.0 (March 22, 2021) Bugs fixed #3 Exception in PS3 Japanese files Enhancements #4 Speed up file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
