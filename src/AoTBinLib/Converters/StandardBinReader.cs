@@ -21,11 +21,8 @@
 namespace AoTBinLib.Converters
 {
     using System;
-    using System.IO;
     using AoTBinLib.Enums;
-    using AoTBinLib.Exceptions;
     using AoTBinLib.Types;
-    using Ionic.Zlib;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
     using Yarhl.IO;
@@ -117,23 +114,19 @@ namespace AoTBinLib.Converters
                         }
                         else
                         {
-                            DataStream stream = DataStreamFactory.FromStream(source.Stream, offset, size);
-                            DataStream inflatedStream;
+                            node = NodeFactory.FromSubstream(fileName, source.Stream, offset, size);
                             FileType type;
-                            if (size == 0x00001A48 && inflatedSize == 0x10290000)
+                            if ((size == 0x00001A48 && inflatedSize == 0x10290000) ||
+                                (size == 0x00001681 && inflatedSize == 0xBC4B0000))
                             {
-                                // This files appear in PS3. They are stored as LittleEndian.
-                                var alternateEndianness = _params.Endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
-                                inflatedStream = Inflate(stream, alternateEndianness);
+                                // These files appear in PS3. They are stored as LittleEndian.
                                 type = FileType.CompressedAlternateEndian;
                             }
                             else
                             {
-                                inflatedStream = Inflate(stream, _params.Endianness);
                                 type = FileType.Compressed;
                             }
 
-                            node = NodeFactory.FromSubstream(fileName, inflatedStream, 0, inflatedStream.Length);
                             node.Tags["Type"] = type;
                         }
 
@@ -154,37 +147,6 @@ namespace AoTBinLib.Converters
             }
 
             return result;
-        }
-
-        private static DataStream Inflate(DataStream source, EndiannessMode endianness)
-        {
-            DataStream dest = DataStreamFactory.FromMemory();
-
-            source.Seek(0);
-            var reader = new DataReader(source)
-            {
-                Endianness = endianness,
-            };
-
-            int size = reader.ReadInt32();
-            int chunkSize = reader.ReadInt32();
-
-            while (chunkSize != 0)
-            {
-                using var zlibStream = new ZlibStream(dest, CompressionMode.Decompress, true);
-                source.WriteSegmentTo(source.Position, chunkSize, zlibStream);
-                zlibStream.Close();
-
-                source.Seek(chunkSize, SeekOrigin.Current);
-                chunkSize = reader.ReadInt32();
-            }
-
-            if (dest.Length != size)
-            {
-                throw new ExtractionException("Result size doesn't match with expected size.");
-            }
-
-            return dest;
         }
     }
 }

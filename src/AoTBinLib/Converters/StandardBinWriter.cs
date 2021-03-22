@@ -24,7 +24,6 @@ namespace AoTBinLib.Converters
     using System.IO;
     using AoTBinLib.Enums;
     using AoTBinLib.Types;
-    using Ionic.Zlib;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
     using Yarhl.IO;
@@ -74,8 +73,6 @@ namespace AoTBinLib.Converters
             {
                 throw new FormatException("No files selected.");
             }
-
-            byte[] alternateEndianDataFile = File.ReadAllBytes("CompressedAlternateEndian.bin");
 
             _params.Stream ??= DataStreamFactory.FromMemory();
 
@@ -133,21 +130,19 @@ namespace AoTBinLib.Converters
                         node.Stream.WriteTo(writer.Stream);
                         break;
                     case FileType.Compressed:
-                        DataStream deflatedStream = Deflate(node.Stream, _params.Endianness);
-                        writer.Write((int)deflatedStream.Length); // size
-                        writer.Write((int)node.Stream.Length); // inflated size
+                        writer.Write((int)node.Stream.Length); // size
+                        writer.Write((int)node.Tags["InflatedSize"]); // inflated size
                         writer.Stream.Seek(0, SeekOrigin.End);
-                        deflatedStream.WriteTo(writer.Stream);
-                        deflatedStream.Dispose();
+                        node.Stream.WriteTo(writer.Stream);
                         break;
                     case FileType.CompressedAlternateEndian:
                         var alternateEndianness = _params.Endianness == EndiannessMode.BigEndian ? EndiannessMode.LittleEndian : EndiannessMode.BigEndian;
-                        writer.Write(0x00001A48); // size
+                        writer.Write((int)node.Stream.Length); // size
                         writer.Endianness = alternateEndianness;
-                        writer.Write(0x00002910); // inflated size
+                        writer.Write((int)node.Tags["InflatedSize"]); // inflated size
                         writer.Endianness = _params.Endianness;
                         writer.Stream.Seek(0, SeekOrigin.End);
-                        writer.Write(alternateEndianDataFile);
+                        node.Stream.WriteTo(writer.Stream);
                         break;
                     default:
                         throw new FormatException($"Unsupported file type: {type}");
@@ -155,44 +150,6 @@ namespace AoTBinLib.Converters
             }
 
             return new BinaryFormat(_params.Stream);
-        }
-
-        private static DataStream Deflate(DataStream source, EndiannessMode endianness)
-        {
-            DataStream dest = DataStreamFactory.FromMemory();
-
-            var writer = new DataWriter(dest)
-            {
-                Endianness = endianness,
-            };
-
-            source.Seek(0);
-            writer.Write((int)source.Length);
-
-            int remaining = (int)source.Length;
-            while (remaining > 0)
-            {
-                int chunkSize = Math.Min(remaining, 0x8000);
-
-                long lengthPos = dest.Position;
-                writer.Write(0); // size placeholder
-
-                long startDataPos = dest.Position;
-                using var zlibStream = new ZlibStream(dest, CompressionMode.Compress, CompressionLevel.BestCompression, true);
-                source.WriteSegmentTo(source.Position, chunkSize, zlibStream);
-                zlibStream.Close();
-                long compressedChunkSize = dest.Position - startDataPos;
-                dest.PushToPosition(lengthPos);
-                writer.Write((int)compressedChunkSize);
-                dest.PopPosition();
-
-                source.Seek(chunkSize, SeekOrigin.Current);
-                remaining -= chunkSize;
-            }
-
-            writer.Write(0);
-
-            return dest;
         }
     }
 }

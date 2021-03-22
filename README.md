@@ -5,6 +5,7 @@ This app can extract and create Attack on Titan BIN archives.
 It is compatible with:
 
 - Attack on Titan (PC)
+- Attack on Titan (VITA)
 - Attack on Titan (PS3)
 - Attack on Titan II (PC)
 
