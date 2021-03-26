@@ -86,8 +86,8 @@
   },
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
-    "title": "v1.1.0 (March 22, 2021) | AoTBinTool",
-    "keywords": "v1.1.0 (March 22, 2021) Bugs fixed #3 Exception in PS3 Japanese files Enhancements #4 Speed up file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
+    "title": "vNext (March 26, 2021) | AoTBinTool",
+    "keywords": "vNext (March 26, 2021) As part of this release we had 2 issues closed. Enhancements #7 Update BIN files #5 Update BIN archives v1.1.0 (March 22, 2021) Bugs fixed #3 Exception in PS3 Japanese files Enhancements #4 Speed up file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
@@ -102,11 +102,11 @@
   "index.html": {
     "href": "index.html",
     "title": "AoTBinTool | AoTBinTool",
-    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (VITA) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3."
+    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (VITA) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3. Update BIN archive ./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt] --file-list parameter is needed if new files in directory has names."
   },
   "README.html": {
     "href": "README.html",
     "title": "AoTBinTool | AoTBinTool",
-    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (VITA) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3."
+    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (VITA) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3. Update BIN archive ./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt] --file-list parameter is needed if new files in directory has names."
   }
 }
