@@ -128,6 +128,7 @@ namespace AoTBinLib.Converters
                             }
 
                             node.Tags["Type"] = type;
+                            node.Tags["InflatedSize"] = inflatedSize;
                         }
 
                         break;

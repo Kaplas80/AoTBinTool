@@ -26,3 +26,11 @@ It is compatible with:
 ```
 
 `--big-endian` parameter is optional. Use it if BIN file is for PS3.
+
+### Update BIN archive
+
+```
+./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt]
+```
+
+`--file-list` parameter is needed if new files in directory has names.
