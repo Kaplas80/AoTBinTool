@@ -23,6 +23,7 @@ namespace AoTBinTool
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
     using AoTBinLib.Converters;
     using AoTBinLib.Enums;
     using AoTBinTool.Options;
@@ -44,9 +45,10 @@ namespace AoTBinTool
         /// <param name="args">Application arguments.</param>
         public static void Main(string[] args)
         {
-            Parser.Default.ParseArguments<ExtractOptions, BuildOptions>(args)
+            Parser.Default.ParseArguments<ExtractOptions, BuildOptions, UpdateOptions>(args)
                 .WithParsed<ExtractOptions>(Extract)
-                .WithParsed<BuildOptions>(Build);
+                .WithParsed<BuildOptions>(Build)
+                .WithParsed<UpdateOptions>(Update);
         }
 
         private static void Extract(ExtractOptions opts)
@@ -198,6 +200,112 @@ namespace AoTBinTool
             Console.Write("Building BIN archive... ");
             container.TransformWith<StandardBinCompressor, EndiannessMode>(parameters.Endianness)
                 .TransformWith<StandardBinWriter, WriterParameters>(parameters);
+            stream.Flush();
+            stream.Dispose();
+            Console.WriteLine("DONE");
+        }
+
+        private static void Update(UpdateOptions opts)
+        {
+            if (!File.Exists(opts.InputBin))
+            {
+                Console.WriteLine("INPUT FILE NOT FOUND!!");
+                return;
+            }
+
+            if (!Directory.Exists(opts.InputDir))
+            {
+                Console.WriteLine("INPUT DIRECTORY NOT FOUND!!");
+                return;
+            }
+
+            if (File.Exists(opts.Output))
+            {
+                Console.WriteLine("OUTPUT FILE ALREADY EXISTS. IT WILL BE DELETED");
+                Console.Write("Continue (y/N)?");
+                string continueValue = Console.ReadLine();
+                if (string.IsNullOrEmpty(continueValue) || !string.Equals(continueValue, "y", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Console.WriteLine("Cancelled by user.");
+                    return;
+                }
+
+                File.Delete(opts.Output);
+            }
+
+            string[] fileList;
+
+            if (!string.IsNullOrEmpty(opts.FileList) && File.Exists(opts.FileList))
+            {
+                Console.WriteLine($"Using \"{opts.FileList}\" as file list...");
+                fileList = File.ReadAllLines(opts.FileList);
+            }
+            else
+            {
+                fileList = Array.Empty<string>();
+            }
+
+            Console.Write("Reading BIN file... ");
+            Node binFile = NodeFactory.FromFile(opts.InputBin);
+            var endianness = IdentifyEndianness(binFile);
+            var readerParameters = new ReaderParameters
+            {
+                Endianness = endianness,
+                FileNames = fileList,
+            };
+
+            binFile.TransformWith<StandardBinReader, ReaderParameters>(readerParameters);
+            Console.WriteLine("DONE");
+
+            Console.Write($"Reading files in {opts.InputDir}... ");
+            string[] newFiles = Directory.GetFiles(opts.InputDir, "*", SearchOption.AllDirectories);
+            Parallel.ForEach(newFiles, newFile =>
+            {
+                string file = Path.GetRelativePath(opts.InputDir, newFile).Replace('\\', '/');
+                Node oldNode = Navigator.SearchNode(binFile, file);
+                if (oldNode == null)
+                {
+                    return;
+                }
+
+                DataStream s = DataStreamFactory.FromFile(newFile, FileOpenMode.Read);
+                oldNode.ChangeFormat(new BinaryFormat(s), true);
+                oldNode.Tags["InflatedSize"] = (uint)s.Length;
+                oldNode.TransformWith<Compressor, EndiannessMode>(endianness);
+            });
+
+            Console.WriteLine("DONE");
+
+            Console.Write("Building BIN archive... ");
+            DataStream stream = DataStreamFactory.FromFile(opts.Output, FileOpenMode.Write);
+            var parameters = new WriterParameters
+            {
+                Endianness = endianness,
+                Stream = stream,
+            };
+
+            var container = NodeFactory.CreateContainer("root");
+            int index = 0;
+            foreach (Node srcNode in Navigator.IterateNodes(binFile))
+            {
+                if (srcNode.IsContainer)
+                {
+                    continue;
+                }
+
+                Node node = NodeFactory.FromSubstream(index.ToString(), srcNode.Stream, 0, srcNode.Stream.Length);
+                foreach (string key in srcNode.Tags.Keys)
+                {
+                    node.Tags[key] = srcNode.Tags[key];
+                }
+
+                container.Add(node);
+                index++;
+            }
+
+            container.SortChildren((x, y) => ((int)x.Tags["Index"]).CompareTo((int)y.Tags["Index"]));
+
+            container.TransformWith<StandardBinWriter, WriterParameters>(parameters);
             stream.Flush();
             stream.Dispose();
             Console.WriteLine("DONE");
