@@ -265,13 +265,32 @@ namespace AoTBinTool
                 Node oldNode = Navigator.SearchNode(binFile, file);
                 if (oldNode == null)
                 {
+                    Console.WriteLine($"{file} not found in {opts.InputBin}");
                     return;
                 }
 
                 DataStream s = DataStreamFactory.FromFile(newFile, FileOpenMode.Read);
-                oldNode.ChangeFormat(new BinaryFormat(s), true);
-                oldNode.Tags["InflatedSize"] = (uint)s.Length;
-                oldNode.TransformWith<Compressor, EndiannessMode>(endianness);
+                var type = oldNode.Tags["Type"];
+                switch (type)
+                {
+                        case FileType.Normal:
+                            oldNode.ChangeFormat(new BinaryFormat(s), true);
+                            break;
+
+                        case FileType.Compressed:
+                            oldNode.ChangeFormat(new BinaryFormat(s), true);
+                            oldNode.Tags["InflatedSize"] = (uint)s.Length;
+                            oldNode.TransformWith<Compressor, EndiannessMode>(endianness);
+                            break;
+
+                        case FileType.CompressedAlternateEndian:
+                            oldNode.ChangeFormat(new BinaryFormat(s), true);
+                            oldNode.Tags["InflatedSize"] = (uint)s.Length;
+                            oldNode.TransformWith<Compressor, EndiannessMode>(endianness == EndiannessMode.BigEndian
+                                ? EndiannessMode.LittleEndian
+                                : EndiannessMode.BigEndian);
+                            break;
+                }
             });
 
             Console.WriteLine("DONE");
