@@ -18,38 +18,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-namespace AoTBinTool.Options
+namespace AoTBinTool
 {
-    using CommandLine;
-
     /// <summary>
-    /// Build BIN archive.
+    /// Known BIN archives.
     /// </summary>
-    [Verb("build", HelpText = "Build BIN archive.")]
-    public class BuildOptions
+    public enum BinType
     {
         /// <summary>
-        /// Gets or sets the input directory.
+        /// Standard BIN archive (LINKDATA).
         /// </summary>
-        [Option("input", Required = true, HelpText = "Input directory.")]
-        public string Input { get; set; }
+        Standard,
 
         /// <summary>
-        /// Gets or sets the output BIN file.
+        /// DLC BIN archive.
         /// </summary>
-        [Option("output", Required = true, HelpText = "Output BIN file.")]
-        public string Output { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the output file will use big endian.
-        /// </summary>
-        [Option("big-endian", Required = false, HelpText = "Create using Big Endian (for PS3).")]
-        public bool BigEndian { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the output file will be in DLC format.
-        /// </summary>
-        [Option("dlc", Required = false, HelpText = "Create as DLC.")]
-        public bool Dlc { get; set; }
+        Dlc,
     }
 }

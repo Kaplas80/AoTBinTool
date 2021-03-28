@@ -87,15 +87,27 @@ namespace AoTBinTool
 
             Console.Write("Reading BIN file... ");
             Node binFile = NodeFactory.FromFile(opts.Input);
-            var endianness = IdentifyEndianness(binFile);
+            (BinType binType, EndiannessMode endianness) = IdentifyFile(binFile);
             var readerParameters = new ReaderParameters
             {
                 Endianness = endianness,
                 FileNames = fileList,
             };
 
-            binFile.TransformWith<StandardBinReader, ReaderParameters>(readerParameters)
-                .TransformWith<StandardBinDecompressor, EndiannessMode>(endianness);
+            switch (binType)
+            {
+                case BinType.Standard:
+                    binFile.TransformWith<StandardBinReader, ReaderParameters>(readerParameters)
+                        .TransformWith<StandardBinDecompressor, EndiannessMode>(endianness);
+                    break;
+                case BinType.Dlc:
+                    binFile.TransformWith<DlcBinReader, ReaderParameters>(readerParameters);
+                    break;
+                default:
+                    Console.WriteLine("Unknown file type");
+                    return;
+            }
+
             Console.WriteLine("DONE");
 
             Console.Write("Extracting files... ");
@@ -198,8 +210,16 @@ namespace AoTBinTool
             };
 
             Console.Write("Building BIN archive... ");
-            container.TransformWith<StandardBinCompressor, EndiannessMode>(parameters.Endianness)
-                .TransformWith<StandardBinWriter, WriterParameters>(parameters);
+            if (opts.Dlc)
+            {
+                container.TransformWith<DlcBinWriter, WriterParameters>(parameters);
+            }
+            else
+            {
+                container.TransformWith<StandardBinCompressor, EndiannessMode>(parameters.Endianness)
+                    .TransformWith<StandardBinWriter, WriterParameters>(parameters);
+            }
+
             stream.Flush();
             stream.Dispose();
             Console.WriteLine("DONE");
@@ -247,14 +267,26 @@ namespace AoTBinTool
 
             Console.Write("Reading BIN file... ");
             Node binFile = NodeFactory.FromFile(opts.InputBin);
-            var endianness = IdentifyEndianness(binFile);
+            (BinType binType, EndiannessMode endianness) = IdentifyFile(binFile);
             var readerParameters = new ReaderParameters
             {
                 Endianness = endianness,
                 FileNames = fileList,
             };
 
-            binFile.TransformWith<StandardBinReader, ReaderParameters>(readerParameters);
+            switch (binType)
+            {
+                case BinType.Standard:
+                    binFile.TransformWith<StandardBinReader, ReaderParameters>(readerParameters);
+                    break;
+                case BinType.Dlc:
+                    binFile.TransformWith<DlcBinReader, ReaderParameters>(readerParameters);
+                    break;
+                default:
+                    Console.WriteLine("Unknown file type");
+                    return;
+            }
+
             Console.WriteLine("DONE");
 
             Console.Write($"Reading files in {opts.InputDir}... ");
@@ -324,13 +356,22 @@ namespace AoTBinTool
 
             container.SortChildren((x, y) => ((int)x.Tags["Index"]).CompareTo((int)y.Tags["Index"]));
 
-            container.TransformWith<StandardBinWriter, WriterParameters>(parameters);
+            switch (binType)
+            {
+                case BinType.Standard:
+                    container.TransformWith<StandardBinWriter, WriterParameters>(parameters);
+                    break;
+                case BinType.Dlc:
+                    container.TransformWith<DlcBinWriter, WriterParameters>(parameters);
+                    break;
+            }
+
             stream.Flush();
             stream.Dispose();
             Console.WriteLine("DONE");
         }
 
-        private static EndiannessMode IdentifyEndianness(Node binFile)
+        private static (BinType, EndiannessMode) IdentifyFile(Node binFile)
         {
             binFile.Stream.PushToPosition(0);
             var reader = new DataReader(binFile.Stream) { Endianness = EndiannessMode.BigEndian };
@@ -339,8 +380,10 @@ namespace AoTBinTool
 
             return magic switch
             {
-                0x00077DF9 => EndiannessMode.BigEndian,
-                0xF97D0700 => EndiannessMode.LittleEndian,
+                0x00077DF9 => (BinType.Standard, EndiannessMode.BigEndian),
+                0xF97D0700 => (BinType.Standard, EndiannessMode.LittleEndian),
+                0x00000064 => (BinType.Dlc, EndiannessMode.BigEndian),
+                0x64000000 => (BinType.Dlc, EndiannessMode.LittleEndian),
                 _ => throw new FormatException($"Unrecognized file magic number: {magic:X8}"),
             };
         }
