@@ -2,12 +2,11 @@
 
 This app can extract and create Attack on Titan BIN archives.
 
-It is compatible with:
+## Tested on
 
-- Attack on Titan (PC)
-- Attack on Titan (VITA)
-- Attack on Titan (PS3)
-- Attack on Titan II (PC)
+- Attack on Titan base game files (PC, VITA, PS3)
+- Attack on Titan DLC files (PC, VITA)
+- Attack on Titan II base game files (PC)
 
 ## Usage
 
@@ -22,10 +21,11 @@ It is compatible with:
 ### Create BIN archive
 
 ```
-./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian]
+./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] [--dlc]
 ```
 
-`--big-endian` parameter is optional. Use it if BIN file is for PS3.
+`--big-endian` parameter is optional. Use it if BIN file will be used on PS3.
+`--dlc` parameter is optional. Use it to save BIN in DLC format.
 
 ### Update BIN archive
 
