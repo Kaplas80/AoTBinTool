@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "VBusf9WJiTx56CLHliYDTg=="
+          "hash": "i7YmqAW2yC1x0lc1iWHEqw=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.Compressor.html",
-          "hash": "RF0f8r6vj8pT+B4J5MKN9g=="
+          "hash": "PWvG8Q5vhHwfSiW88wF2/w=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,31 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.Decompressor.html",
-          "hash": "OXZUIS/9CyJqJALn3VAS0g=="
+          "hash": "+x/fpivZ+HvlUGXr+Ji71w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Converters.DlcBinReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Converters.DlcBinReader.html",
+          "hash": "BlBV3cYmPrnL2D36cZKcaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AoTBinLib.Converters.DlcBinWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AoTBinLib.Converters.DlcBinWriter.html",
+          "hash": "GRmB6I4CgSKBEP1ouBhBZw=="
         }
       },
       "is_incremental": false,
@@ -66,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.ReaderParameters.html",
-          "hash": "ar2NcBNgInxDj6UiEmZ6xw=="
+          "hash": "GtaCYkUL2ChewiqTB4nTxQ=="
         }
       },
       "is_incremental": false,
@@ -78,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinCompressor.html",
-          "hash": "9+Ze/Y6IuFAxn4hoP0e/iw=="
+          "hash": "5xBuioKK9vuW+UWTctL/TQ=="
         }
       },
       "is_incremental": false,
@@ -90,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinDecompressor.html",
-          "hash": "8d2mCorQCk8Y4+YIcNvrgg=="
+          "hash": "zed013jOSnIndfWfbnd9Uw=="
         }
       },
       "is_incremental": false,
@@ -102,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinReader.html",
-          "hash": "HnYiKwZXjbYmnLcNi9v3QA=="
+          "hash": "ewgOBeIKDmKy4HXk3Ns/OQ=="
         }
       },
       "is_incremental": false,
@@ -114,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinWriter.html",
-          "hash": "qyspzFh/oetEQviWyzHluw=="
+          "hash": "Tl9szwZ5Ypd/7aNAhOSBkw=="
         }
       },
       "is_incremental": false,
@@ -126,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.WriterParameters.html",
-          "hash": "ZXLDby6HGEvG4+I6WGktzA=="
+          "hash": "7KnkWcM0JDkHp1wYpUhahQ=="
         }
       },
       "is_incremental": false,
@@ -138,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.html",
-          "hash": "+wtOq7ncbGxf384fMpyOKg=="
+          "hash": "z9XmFOhX1PASj6uNc1kdkA=="
         }
       },
       "is_incremental": false,
@@ -150,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Enums.FileType.html",
-          "hash": "JOHrb2wB0dRtLHvTnC5JOw=="
+          "hash": "itIu+YXWT9YR55imezphWg=="
         }
       },
       "is_incremental": false,
@@ -162,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Enums.html",
-          "hash": "nB8dIjY7EcXsksOOL01yUA=="
+          "hash": "Pdi7poLd60IODmsc8OWrvw=="
         }
       },
       "is_incremental": false,
@@ -174,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Exceptions.ExtractionException.html",
-          "hash": "cqg+hmCeeVSP5NgO1ZyTxw=="
+          "hash": "nG6lZuz/R8XI8xDUKZzlWg=="
         }
       },
       "is_incremental": false,
@@ -186,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Exceptions.html",
-          "hash": "936hmxFioT5eD+DG4/5aNg=="
+          "hash": "npz653OKNLtgizg/fumxDA=="
         }
       },
       "is_incremental": false,
@@ -198,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.BinFileHeader.html",
-          "hash": "4q28euXjr2mpRs6mvXFJaA=="
+          "hash": "QLVbrd3rHHLx62iYY5r4OQ=="
         }
       },
       "is_incremental": false,
@@ -210,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.FileInfo.html",
-          "hash": "VWM4Fu/7EfjpCpuw+fJ0fg=="
+          "hash": "K+QbsS26hMDwQC+xSoaHZg=="
         }
       },
       "is_incremental": false,
@@ -222,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.html",
-          "hash": "fLlP3qrZFINPXh0gNyjphA=="
+          "hash": "VpQK8IOa+1Wu5f2Hjg8Biw=="
         }
       },
       "is_incremental": false,
@@ -234,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "RFlruh+7bQZ5q9sOqv886A=="
+          "hash": "v0ygmSFbI8D92nH76KwhRQ=="
         }
       },
       "is_incremental": false,
@@ -246,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/toc.html",
-          "hash": "6ln6EAzBxQATukqF4GzvEQ=="
+          "hash": "AAmf1v4BUi0x7uF90hQH8w=="
         }
       },
       "is_incremental": false,
@@ -327,7 +351,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "QhS+m1MGV+uXyDbWj44Ztg=="
+          "hash": "FUcilEGaZ5aMHzY0MZ2S5w=="
         }
       },
       "is_incremental": false,
@@ -366,7 +390,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 16,
+          "total_file_count": 18,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

@@ -9,10 +9,20 @@
     "title": "Class Decompressor | AoTBinTool",
     "keywords": "Class Decompressor ZLib decompressor. Inheritance Object Decompressor Implements IInitializer < EndiannessMode > Namespace : AoTBinLib.Converters Assembly : AoTBinLib.dll Syntax public class Decompressor : IConverter<BinaryFormat, BinaryFormat>, IInitializer<EndiannessMode> Methods | Improve this Doc View Source Convert(BinaryFormat) Decompress (inflate) a BinaryFormat. Declaration public BinaryFormat Convert(BinaryFormat source) Parameters Type Name Description BinaryFormat source Source BinaryFormat. Returns Type Description BinaryFormat Inflated BinaryFormat. | Improve this Doc View Source Initialize(EndiannessMode) Converter initializer. Declaration public void Initialize(EndiannessMode parameters) Parameters Type Name Description EndiannessMode parameters Endianness. Implements IInitializer<>"
   },
+  "api/AoTBinLib.Converters.DlcBinReader.html": {
+    "href": "api/AoTBinLib.Converters.DlcBinReader.html",
+    "title": "Class DlcBinReader | AoTBinTool",
+    "keywords": "Class DlcBinReader Attack on Titan DLC BIN reader. Inheritance Object DlcBinReader Implements IInitializer < ReaderParameters > Namespace : AoTBinLib.Converters Assembly : AoTBinLib.dll Syntax public class DlcBinReader : IConverter<BinaryFormat, NodeContainerFormat>, IInitializer<ReaderParameters> Methods | Improve this Doc View Source Convert(BinaryFormat) Deserializes a DLC BIN archive. Declaration public NodeContainerFormat Convert(BinaryFormat source) Parameters Type Name Description BinaryFormat source DLC BIN archive as BinaryFormat. Returns Type Description NodeContainerFormat The NodeContainerFormat. | Improve this Doc View Source Initialize(ReaderParameters) Converter initializer. Declaration public void Initialize(ReaderParameters parameters) Parameters Type Name Description ReaderParameters parameters Reader configuration. Implements IInitializer<>"
+  },
+  "api/AoTBinLib.Converters.DlcBinWriter.html": {
+    "href": "api/AoTBinLib.Converters.DlcBinWriter.html",
+    "title": "Class DlcBinWriter | AoTBinTool",
+    "keywords": "Class DlcBinWriter Attack on Titan DLC BIN writer. Inheritance Object DlcBinWriter Implements IInitializer < WriterParameters > Namespace : AoTBinLib.Converters Assembly : AoTBinLib.dll Syntax public class DlcBinWriter : IConverter<NodeContainerFormat, BinaryFormat>, IInitializer<WriterParameters> Methods | Improve this Doc View Source Convert(NodeContainerFormat) Serializes a DLC BIN archive. Declaration public BinaryFormat Convert(NodeContainerFormat source) Parameters Type Name Description NodeContainerFormat source Collection of files as NodeContainerFormat. Returns Type Description BinaryFormat The BinaryFormat. | Improve this Doc View Source Initialize(WriterParameters) Converter initializer. Declaration public void Initialize(WriterParameters parameters) Parameters Type Name Description WriterParameters parameters Writer configuration. Implements IInitializer<>"
+  },
   "api/AoTBinLib.Converters.html": {
     "href": "api/AoTBinLib.Converters.html",
     "title": "Namespace AoTBinLib.Converters | AoTBinTool",
-    "keywords": "Namespace AoTBinLib.Converters Classes Compressor ZLib compressor. Decompressor ZLib decompressor. ReaderParameters Parameters needed for BIN reading. StandardBinCompressor Compresses all marked nodes. StandardBinDecompressor Decompresses all compressed nodes. StandardBinReader Attack on Titan standard BIN reader. StandardBinWriter Attack on Titan standard BIN writer. WriterParameters Parameters needed for BIN writing."
+    "keywords": "Namespace AoTBinLib.Converters Classes Compressor ZLib compressor. Decompressor ZLib decompressor. DlcBinReader Attack on Titan DLC BIN reader. DlcBinWriter Attack on Titan DLC BIN writer. ReaderParameters Parameters needed for BIN reading. StandardBinCompressor Compresses all marked nodes. StandardBinDecompressor Decompresses all compressed nodes. StandardBinReader Attack on Titan standard BIN reader. StandardBinWriter Attack on Titan standard BIN writer. WriterParameters Parameters needed for BIN writing."
   },
   "api/AoTBinLib.Converters.ReaderParameters.html": {
     "href": "api/AoTBinLib.Converters.ReaderParameters.html",
@@ -86,8 +96,8 @@
   },
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
-    "title": "v1.2.0 (March 26, 2021) | AoTBinTool",
-    "keywords": "v1.2.0 (March 26, 2021) Enhancements #7 Update BIN files v1.1.0 (March 22, 2021) Bugs fixed #3 Exception in PS3 Japanese files Enhancements #4 Speed up file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
+    "title": "vNext (March 28, 2021) | AoTBinTool",
+    "keywords": "vNext (March 28, 2021) As part of this release we had 1 issue closed. Enhancement #8 DLC files support v1.2.0 (March 26, 2021) Enhancements #7 Update BIN files v1.1.0 (March 22, 2021) Bugs fixed #3 Exception in PS3 Japanese files Enhancements #4 Speed up file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
@@ -102,11 +112,11 @@
   "index.html": {
     "href": "index.html",
     "title": "AoTBinTool | AoTBinTool",
-    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (VITA) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3. Update BIN archive ./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt] --file-list parameter is needed if new files in directory has names."
+    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. Tested on Attack on Titan base game files (PC, VITA, PS3) Attack on Titan DLC files (PC, VITA, PS3) Attack on Titan II base game files (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] [--dlc] --big-endian parameter is optional. Use it if BIN file will be used on PS3. --dlc parameter is optional. Use it to save BIN in DLC format. Update BIN archive ./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt] --file-list parameter is needed if new files in directory has names."
   },
   "README.html": {
     "href": "README.html",
     "title": "AoTBinTool | AoTBinTool",
-    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. It is compatible with: Attack on Titan (PC) Attack on Titan (VITA) Attack on Titan (PS3) Attack on Titan II (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] --big-endian parameter is optional. Use it if BIN file is for PS3. Update BIN archive ./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt] --file-list parameter is needed if new files in directory has names."
+    "keywords": "AoTBinTool This app can extract and create Attack on Titan BIN archives. Tested on Attack on Titan base game files (PC, VITA, PS3) Attack on Titan DLC files (PC, VITA, PS3) Attack on Titan II base game files (PC) Usage Extract files from BIN ./AoTBinTool extract --input path/to/archive.bin --output output/directory [--file-list path/to/file-list.txt] --file-list parameter is optional. Create BIN archive ./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] [--dlc] --big-endian parameter is optional. Use it if BIN file will be used on PS3. --dlc parameter is optional. Use it to save BIN in DLC format. Update BIN archive ./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt] --file-list parameter is needed if new files in directory has names."
   }
 }

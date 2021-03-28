@@ -87,12 +87,11 @@
 <h1 id="aotbintool-mit-license-build-and-release">AoTBinTool <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="MIT License"></a> <img src="https://github.com/kaplas80/AoTBinTool/workflows/Build%20and%20release/badge.svg" alt="Build and release"></h1>
 
 <p>This app can extract and create Attack on Titan BIN archives.</p>
-<p>It is compatible with:</p>
+<h2 id="tested-on">Tested on</h2>
 <ul>
-<li>Attack on Titan (PC)</li>
-<li>Attack on Titan (VITA)</li>
-<li>Attack on Titan (PS3)</li>
-<li>Attack on Titan II (PC)</li>
+<li>Attack on Titan base game files (PC, VITA, PS3)</li>
+<li>Attack on Titan DLC files (PC, VITA, PS3)</li>
+<li>Attack on Titan II base game files (PC)</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <h3 id="extract-files-from-bin">Extract files from BIN</h3>
@@ -100,9 +99,10 @@
 </code></pre>
 <p><code>--file-list</code> parameter is optional.</p>
 <h3 id="create-bin-archive">Create BIN archive</h3>
-<pre><code>./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian]
+<pre><code>./AoTBinTool build --input path/to/directory --output output/file.bin [--big-endian] [--dlc]
 </code></pre>
-<p><code>--big-endian</code> parameter is optional. Use it if BIN file is for PS3.</p>
+<p><code>--big-endian</code> parameter is optional. Use it if BIN file will be used on PS3.
+<code>--dlc</code> parameter is optional. Use it to save BIN in DLC format.</p>
 <h3 id="update-bin-archive">Update BIN archive</h3>
 <pre><code>./AoTBinTool update --input-bin path/to/original.bin --input-dir path/to/directory --output output/modified.bin [--file-list path/to/file-list.txt]
 </code></pre>
