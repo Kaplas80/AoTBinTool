@@ -5,7 +5,7 @@ This app can extract and create Attack on Titan BIN archives.
 ## Tested on
 
 - Attack on Titan base game files (PC, VITA, PS3)
-- Attack on Titan DLC files (PC, VITA)
+- Attack on Titan DLC files (PC, VITA, PS3)
 - Attack on Titan II base game files (PC)
 
 ## Usage
