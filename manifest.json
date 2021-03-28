@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.Compressor.html",
-          "hash": "PWvG8Q5vhHwfSiW88wF2/w=="
+          "hash": "Z8dkDu2uYUAMfZdbA6cnLg=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.Decompressor.html",
-          "hash": "+x/fpivZ+HvlUGXr+Ji71w=="
+          "hash": "63a9w554FnvIS5eqqeMziw=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.DlcBinReader.html",
-          "hash": "BlBV3cYmPrnL2D36cZKcaw=="
+          "hash": "lzqkGBF0i2L3J/B/klje4g=="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.DlcBinWriter.html",
-          "hash": "GRmB6I4CgSKBEP1ouBhBZw=="
+          "hash": "Tgv43jPNouspnBif1YjjFw=="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.ReaderParameters.html",
-          "hash": "GtaCYkUL2ChewiqTB4nTxQ=="
+          "hash": "3VtHkUu4vVQj9G+4QzAzCg=="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinCompressor.html",
-          "hash": "5xBuioKK9vuW+UWTctL/TQ=="
+          "hash": "ATWYJifTr3HvqqTsJiiFYg=="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinDecompressor.html",
-          "hash": "zed013jOSnIndfWfbnd9Uw=="
+          "hash": "U3H9OA+UnxXVUWLXF9rdjA=="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinReader.html",
-          "hash": "ewgOBeIKDmKy4HXk3Ns/OQ=="
+          "hash": "DBYYNT2EpA6ANwPQlK4Zog=="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.StandardBinWriter.html",
-          "hash": "Tl9szwZ5Ypd/7aNAhOSBkw=="
+          "hash": "rrXM8xuGBzElfZnoE1VcKA=="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Converters.WriterParameters.html",
-          "hash": "7KnkWcM0JDkHp1wYpUhahQ=="
+          "hash": "KQNAToJ1Oll2l1DrpBS/Bw=="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Enums.FileType.html",
-          "hash": "itIu+YXWT9YR55imezphWg=="
+          "hash": "CGne/t4BHzu51uRlRXJ5YA=="
         }
       },
       "is_incremental": false,
@@ -198,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Exceptions.ExtractionException.html",
-          "hash": "nG6lZuz/R8XI8xDUKZzlWg=="
+          "hash": "vJWbx7SchZDsb/cUZoDkyw=="
         }
       },
       "is_incremental": false,
@@ -222,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.BinFileHeader.html",
-          "hash": "QLVbrd3rHHLx62iYY5r4OQ=="
+          "hash": "kWGUvlrBVkU2goy+9TTQFg=="
         }
       },
       "is_incremental": false,
@@ -234,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/AoTBinLib.Types.FileInfo.html",
-          "hash": "K+QbsS26hMDwQC+xSoaHZg=="
+          "hash": "bUf4wENL00IH6KZz3c9uIw=="
         }
       },
       "is_incremental": false,
@@ -258,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "v0ygmSFbI8D92nH76KwhRQ=="
+          "hash": "Fcv/UBlNhiARIy6c2H5huA=="
         }
       },
       "is_incremental": false,

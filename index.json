@@ -96,8 +96,8 @@
   },
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
-    "title": "vNext (March 28, 2021) | AoTBinTool",
-    "keywords": "vNext (March 28, 2021) As part of this release we had 1 issue closed. Enhancement #8 DLC files support v1.2.0 (March 26, 2021) Enhancements #7 Update BIN files v1.1.0 (March 22, 2021) Bugs fixed #3 Exception in PS3 Japanese files Enhancements #4 Speed up file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
+    "title": "v1.3.0 (March 28, 2021) | AoTBinTool",
+    "keywords": "v1.3.0 (March 28, 2021) Enhancements #8 DLC files support v1.2.0 (March 26, 2021) Enhancements #7 Update BIN files v1.1.0 (March 22, 2021) Bugs fixed #3 Exception in PS3 Japanese files Enhancements #4 Speed up file creation v1.0.0 (March 21, 2021) As part of this release we had 2 issues closed. Enhancements #2 Write BIN archives #1 Extract BIN archives"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
